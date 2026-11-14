@@ -2,1078 +2,609 @@
 <!DOCTYPE html>
 <html lang="pt-BR">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="theme-color" content="#06251a">
+<meta name="description" content="TERRAS RARAS - Sua carteira TR">
+<link rel="manifest" href="manifest.json">
+<title>TERRAS RARAS - Carteira TR</title>
 
-    <title>TERRAS RARAS - Aplicativo TR</title>
+<style>
+/* CONFIGURAÇÃO GERAL */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
 
-    <meta name="theme-color" content="#10251b">
-    <meta name="description" content="Participe das missões e conquiste Terras Raras.">
+body {
+    background: #03150f;
+    color: #ffffff;
+    font-family: Arial, Helvetica, sans-serif;
+}
 
-    <link rel="manifest" href="manifest.json">
-    <link rel="icon" href="icon.svg" type="image/svg+xml">
+.container {
+    width: 100%;
+    max-width: 900px;
+    margin: auto;
+    background: #06251a;
+    min-height: 100vh;
+}
 
-    <style>
-        * {
-            box-sizing: border-box;
-            margin: 0;
-            padding: 0;
-        }
+/* CABEÇALHO */
+.header {
+    padding: 18px 22px;
+    background: #082b20;
+    border-bottom: 1px solid #1d5039;
+}
 
-        body {
-            font-family: Arial, sans-serif;
-            background: #101813;
-            color: #ffffff;
-            min-height: 100vh;
-        }
+.wallet {
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    gap: 12px;
+}
 
-        .app {
-            width: 100%;
-            max-width: 650px;
-            min-height: 100vh;
-            margin: auto;
-            padding: 18px;
-            padding-bottom: 40px;
-            background: #101813;
-        }
+.wallet-icon {
+    width: 48px;
+    height: 48px;
+    border-radius: 50%;
+    background: linear-gradient(145deg, #fff2a0, #e8a900, #9b5700);
+    color: #603800;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 19px;
+    font-weight: bold;
+    border: 3px solid #ffdf55;
+}
 
-        /* CABEÇALHO */
-        .header {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            margin-bottom: 22px;
-        }
+.wallet-label {
+    color: #c7d8cf;
+    font-size: 12px;
+    font-weight: bold;
+}
 
-        .logo {
-            font-size: 19px;
-            font-weight: 900;
-            letter-spacing: 1px;
-        }
+.balance {
+    color: #ffd21c;
+    font-size: 29px;
+    font-weight: 900;
+}
 
-        .logo span {
-            color: #eacb37;
-        }
+.balance small {
+    font-size: 16px;
+}
 
-        /* SALDO NO CANTO SUPERIOR ESQUERDO */
-        .balance {
-            display: inline-flex;
-            align-items: center;
-            gap: 7px;
-            background: #20392b;
-            border: 1px solid #d7b82e;
-            padding: 10px 14px;
-            border-radius: 12px;
-            font-size: 15px;
-        }
+/* LOGO */
+.brand {
+    padding: 18px 22px;
+    display: flex;
+    align-items: center;
+    gap: 12px;
+}
 
-        .balance strong {
-            color: #ffe34d;
-            font-size: 19px;
-        }
+.brand-symbol {
+    width: 42px;
+    height: 42px;
+    background: linear-gradient(145deg, #ffe477, #d58b00);
+    border: 2px solid #fff0a0;
+    border-radius: 50%;
+    color: #573600;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: 900;
+}
 
-        .balance small {
-            color: #ffe34d;
-            font-weight: bold;
-        }
+.brand h1 {
+    font-size: 23px;
+    color: #ffffff;
+}
 
-        /* BANNER PRINCIPAL */
-        .main-banner {
-            width: 100%;
-            overflow: hidden;
-            border-radius: 17px;
-            border: 1px solid #d6b52d;
-            margin-bottom: 22px;
-            background: #1d3024;
-        }
+.brand h1 span {
+    color: #ffd21c;
+}
 
-        .main-banner img {
-            display: block;
-            width: 100%;
-            height: auto;
-            min-height: 170px;
-            object-fit: cover;
-        }
+.brand p {
+    font-size: 11px;
+    color: #b9d2c3;
+    margin-top: 3px;
+}
 
-        .banner-placeholder {
-            min-height: 190px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            text-align: center;
-            padding: 25px;
-            background: linear-gradient(135deg, #183b2a, #536c32);
-        }
+/* BANNER PRINCIPAL */
+.main-banner {
+    width: 100%;
+    display: block;
+    height: auto;
+    max-height: 360px;
+    object-fit: cover;
+}
 
-        .banner-placeholder h2 {
-            color: #ffe34d;
-            font-size: 26px;
-        }
+/* CONTEÚDO PRINCIPAL */
+.content {
+    padding: 22px;
+}
 
-        .banner-placeholder p {
-            margin-top: 10px;
-            line-height: 1.5;
-        }
+.section-title {
+    font-size: 20px;
+    margin-bottom: 10px;
+}
 
-        /* PROPAGANDA DA MISSÃO */
-        .mission-ad {
-            background: linear-gradient(135deg, #173d2a, #0c6740);
-            border: 1px solid #d8b72d;
-            border-radius: 17px;
-            padding: 24px 18px;
-            text-align: center;
-            box-shadow: 0 5px 15px rgba(0,0,0,0.25);
-        }
+.section-description {
+    color: #c2d3ca;
+    line-height: 1.6;
+    font-size: 14px;
+    margin-bottom: 18px;
+}
 
-        .mission-ad .tag {
-            display: inline-block;
-            background: #e8c735;
-            color: #152117;
-            padding: 6px 12px;
-            border-radius: 20px;
-            font-size: 11px;
-            font-weight: bold;
-            margin-bottom: 15px;
-        }
+/* CARTÃO DA MISSÃO */
+.mission-card {
+    padding: 24px 18px;
+    text-align: center;
+    border-radius: 16px;
+    border: 1px solid #a87900;
+    background: linear-gradient(145deg, #173d26, #071d14);
+    box-shadow: 0 8px 25px #00000055;
+}
 
-        .mission-ad h2 {
-            color: #ffe34d;
-            font-size: 24px;
-            margin-bottom: 12px;
-        }
+.mission-icon {
+    font-size: 42px;
+    margin-bottom: 10px;
+}
 
-        .mission-ad p {
-            color: #ffffff;
-            font-size: 14px;
-            line-height: 1.6;
-            margin-bottom: 18px;
-        }
+.mission-card h2 {
+    color: #ffd21c;
+    font-size: 25px;
+    margin-bottom: 10px;
+}
 
-        .reward {
-            font-size: 30px;
-            font-weight: 900;
-            color: #ffe34d;
-            margin-bottom: 18px;
-        }
+.mission-card p {
+    color: #e1e9e4;
+    font-size: 14px;
+    line-height: 1.5;
+    margin-bottom: 18px;
+}
 
-        /* BOTÕES */
-        .primary-button {
-            width: 100%;
-            padding: 16px;
-            border: none;
-            border-radius: 12px;
-            background: linear-gradient(135deg, #ffe34d, #edae00);
-            color: #172116;
-            font-size: 15px;
-            font-weight: 900;
-            cursor: pointer;
-        }
+/* BOTÕES */
+.btn {
+    display: block;
+    width: 100%;
+    padding: 16px;
+    border: none;
+    border-radius: 12px;
+    background: linear-gradient(180deg, #ffe45a, #ffb900);
+    color: #241800;
+    font-size: 16px;
+    font-weight: 900;
+    cursor: pointer;
+    text-decoration: none;
+    text-align: center;
+    box-shadow: 0 4px 0 #986300;
+}
 
-        .primary-button:active {
-            transform: scale(0.98);
-        }
+.btn:active {
+    transform: translateY(3px);
+    box-shadow: none;
+}
 
-        /* PÁGINA DE MISSÃO */
-        .page {
-            display: none;
-        }
+.btn-green {
+    background: linear-gradient(180deg, #19c76b, #078d45);
+    color: #ffffff;
+    box-shadow: 0 4px 0 #045b2b;
+}
 
-        .page.active {
-            display: block;
-        }
+.btn-secondary {
+    background: #173d2c;
+    color: #ffffff;
+    border: 1px solid #43845f;
+    box-shadow: none;
+    margin-top: 12px;
+}
 
-        .back-button {
-            display: inline-block;
-            background: #263b2e;
-            color: #ffffff;
-            border: 1px solid #54735d;
-            padding: 10px 16px;
-            border-radius: 9px;
-            font-weight: bold;
-            cursor: pointer;
-            margin-bottom: 20px;
-        }
+/* TELA DA MISSÃO */
+#missionPage {
+    display: none;
+    padding: 22px;
+}
 
-        .page-title {
-            color: #ffe34d;
-            font-size: 25px;
-            margin-bottom: 18px;
-        }
+.mission-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: 22px;
+}
 
-        .mission-banner {
-            background: linear-gradient(145deg, #17452e, #087444);
-            border: 1px solid #d8b72d;
-            border-radius: 17px;
-            padding: 24px 18px;
-            text-align: center;
-            margin-bottom: 20px;
-        }
+.mission-header h2 {
+    color: #ffd21c;
+    font-size: 22px;
+}
 
-        .mission-icon {
-            font-size: 60px;
-            margin-bottom: 12px;
-        }
+.back-button {
+    background: #17432f;
+    color: #ffffff;
+    border: 1px solid #4d8b68;
+    padding: 10px 15px;
+    border-radius: 8px;
+    cursor: pointer;
+    font-weight: bold;
+}
 
-        .mission-banner h2 {
-            color: #ffe34d;
-            font-size: 23px;
-            margin-bottom: 12px;
-        }
+/* BANNER DA MISSÃO */
+.mission-banner {
+    background: linear-gradient(145deg, #124b2c, #061b12);
+    border: 1px solid #d49b15;
+    border-radius: 16px;
+    padding: 28px 18px;
+    text-align: center;
+    margin-bottom: 20px;
+}
 
-        .mission-banner p {
-            line-height: 1.6;
-            font-size: 14px;
-        }
+.mission-banner .big-icon {
+    font-size: 55px;
+    margin-bottom: 12px;
+}
 
-        .mission-steps {
-            background: #1b2a20;
-            border: 1px solid #34533c;
-            border-radius: 14px;
-            padding: 20px;
-            margin-bottom: 20px;
-        }
+.mission-banner h2 {
+    color: #ffd21c;
+    font-size: 25px;
+    margin-bottom: 12px;
+}
 
-        .mission-steps h3 {
-            color: #ffe34d;
-            margin-bottom: 15px;
-        }
+.mission-banner p {
+    line-height: 1.6;
+    color: #e1e9e4;
+    font-size: 14px;
+}
 
-        .step {
-            display: flex;
-            gap: 12px;
-            margin-bottom: 15px;
-            line-height: 1.5;
-            font-size: 14px;
-        }
+.reward {
+    color: #ffd21c;
+    font-size: 35px;
+    font-weight: 900;
+    margin: 18px 0;
+}
 
-        .step-number {
-            background: #d8b72d;
-            color: #172116;
-            min-width: 27px;
-            height: 27px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            border-radius: 50%;
-            font-weight: bold;
-        }
+.instructions {
+    padding: 20px;
+    border-radius: 12px;
+    background: #0b3020;
+    border: 1px solid #245b3c;
+    margin-bottom: 20px;
+}
 
-        .mission-reward {
-            text-align: center;
-            color: #ffe34d;
-            font-size: 27px;
-            font-weight: 900;
-            margin: 20px 0;
-        }
+.instructions h3 {
+    color: #ffd21c;
+    margin-bottom: 14px;
+}
 
-        .notice {
-            color: #b9c8bd;
-            font-size: 12px;
-            text-align: center;
-            line-height: 1.5;
-            margin-top: 14px;
-        }
+.instructions p {
+    color: #d4e1d9;
+    font-size: 14px;
+    line-height: 1.7;
+    margin-bottom: 10px;
+}
 
-        /* RODAPÉ */
-        .footer {
-            text-align: center;
-            color: #829487;
-            font-size: 11px;
-            margin-top: 30px;
-            padding: 15px;
-        }
+/* RODAPÉ */
+.footer {
+    padding: 25px 15px;
+    text-align: center;
+    color: #789889;
+    font-size: 12px;
+    border-top: 1px solid #1d5039;
+}
 
-        /* NOTIFICAÇÃO */
-        .toast {
-            position: fixed;
-            bottom: 20px;
-            left: 50%;
-            transform: translateX(-50%);
-            background: #e8c735;
-            color: #172116;
-            padding: 13px 20px;
-            border-radius: 10px;
-            font-weight: bold;
-            font-size: 13px;
-            display: none;
-            z-index: 100;
-            width: max-content;
-            max-width: 90%;
-            text-align: center;
-        }
+/* CELULAR */
+@media (max-width: 600px) {
+    .brand h1 {
+        font-size: 20px;
+    }
 
-        @media (max-width: 400px) {
-            .app {
-                padding: 13px;
-            }
+    .balance {
+        font-size: 26px;
+    }
 
-            .logo {
-                font-size: 16px;
-            }
+    .content {
+        padding: 15px;
+    }
 
-            .balance {
-                padding: 8px 10px;
-            }
-        }
-    </style>
+    .mission-card h2 {
+        font-size: 22px;
+    }
+}
+</style>
 </head>
 
 <body>
 
-<main class="app">
+<div class="container">
 
-    <!-- ========================= -->
-    <!-- PÁGINA INICIAL -->
-    <!-- ========================= -->
-
-    <section id="homePage" class="page active">
-
-        <!-- SALDO NO CANTO SUPERIOR ESQUERDO -->
-        <header class="header">
-
-            <div class="logo">
-                TERRAS <span>RARAS</span>
-            </div>
-
-            <div class="balance">
-                <span>🪙</span>
-                <strong id="balance">150</strong>
-                <small>TR</small>
-            </div>
-
-        </header>
-
-        <!-- BANNER PRINCIPAL -->
-        <div class="main-banner">
-
-            <img
-                src="assets/terras-raras-banner.jpg"
-                alt="Minerais e elementos de terras raras"
-                onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';"
-            >
-
-            <div class="banner-placeholder" style="display:none;">
-                <div>
-                    <h2>TERRAS RARAS</h2>
-                    <p>Descubra, participe e conquiste TR!</p>
+    <!-- CABEÇALHO: SALDO NO CANTO SUPERIOR ESQUERDO -->
+    <header class="header">
+        <div class="wallet">
+            <div class="wallet-icon">TR</div>
+            <div>
+                <div class="wallet-label">SEU SALDO ATUAL</div>
+                <div class="balance">
+                    <span id="balance">600</span> <small>TR</small>
                 </div>
             </div>
-
         </div>
+    </header>
 
-        <!-- PROPAGANDA PARA GANHAR 50 TR -->
-        <div class="mission-ad">
+    <!-- IDENTIDADE DO APLICATIVO -->
+    <div class="brand">
+        <div class="brand-symbol">TR</div>
+        <div>
+            <h1>TERRAS <span>RARAS</span></h1>
+            <p>Seu futuro vale mais!</p>
+        </div>
+    </div>
 
-            <span class="tag">NOVA MISSÃO DISPONÍVEL</span>
+    <!-- PÁGINA INICIAL -->
+    <main id="homePage">
 
-            <h2>GANHE MAIS 50 TR!</h2>
+        <!-- BANNER PRINCIPAL -->
+        <img
+            class="main-banner"
+            src="assets/terras-raras-banner.jpg"
+            alt="TERRAS RARAS - Mineração e recursos minerais"
+            onerror="this.style.display='none';"
+        >
 
-            <p>
-                Complete nossa missão especial:
-                instale o aplicativo Terras Raras
-                e receba uma recompensa de 50 TR.
+        <section class="content">
+
+            <h2 class="section-title">Bem-vindo à sua carteira TR!</h2>
+
+            <p class="section-description">
+                Acompanhe seu saldo, participe das missões e descubra
+                novas oportunidades dentro do universo TERRAS RARAS.
             </p>
 
-            <div class="reward">+50 TR</div>
+            <!-- PROPAGANDA DA MISSÃO -->
+            <div class="mission-card">
 
-            <button
-                class="primary-button"
-                type="button"
-                onclick="openMission()"
-            >
-                🎯 PARTICIPAR DA MISSÃO
+                <div class="mission-icon">🎁</div>
+
+                <h2>GANHE MAIS 50 TR!</h2>
+
+                <p>
+                    Participe da missão de instalação do aplicativo
+                    e aumente seu saldo de Terras Raras.
+                </p>
+
+                <button class="btn" onclick="openMission()">
+                    🎁 PARTICIPAR DA MISSÃO
+                </button>
+
+            </div>
+
+        </section>
+    </main>
+
+    <!-- TELA EXCLUSIVA DA MISSÃO -->
+    <section id="missionPage">
+
+        <div class="mission-header">
+            <h2>MISSÃO</h2>
+            <button class="back-button" onclick="closeMission()">
+                ← VOLTAR
             </button>
-
         </div>
 
-        <footer class="footer">
-            © 2026 TERRAS RARAS
-        </footer>
-
-    </section>
-
-
-    <!-- ========================= -->
-    <!-- PÁGINA MISSÃO -->
-    <!-- ========================= -->
-
-    <section id="missionPage" class="page">
-
-        <button
-            class="back-button"
-            type="button"
-            onclick="openHome()"
-        >
-            ← VOLTAR
-        </button>
-
-        <h1 class="page-title">MISSÃO</h1>
-
-        <!-- BANNER DA MISSÃO -->
+        <!-- BANNER EXPLICATIVO -->
         <div class="mission-banner">
 
-            <div class="mission-icon">📲</div>
+            <div class="big-icon">📲</div>
 
             <h2>INSTALE O APLICATIVO</h2>
 
             <p>
-                Instale o TERRAS RARAS no seu dispositivo,
-                aproveite a experiência do aplicativo
-                e conquiste sua recompensa!
+                Instale o TERRAS RARAS no seu dispositivo e participe
+                da nossa missão especial.
             </p>
 
-            <div class="mission-reward">
-                RECOMPENSA: +50 TR
-            </div>
+            <div class="reward">+50 TR</div>
 
-            <button
-                id="installButton"
-                class="primary-button"
-                type="button"
-                onclick="installApp()"
-            >
-                📲 INSTALAR APLICATIVO
-            </button>
+            <p>
+                Complete a missão e receba mais 50 TR na sua carteira!
+            </p>
 
         </div>
 
         <!-- INSTRUÇÕES -->
-        <div class="mission-steps">
+        <div class="instructions">
 
-            <h3>COMO COMPLETAR A MISSÃO</h3>
+            <h3>COMO PARTICIPAR?</h3>
 
-            <div class="step">
-                <span class="step-number">1</span>
-                <span>
-                    Clique no botão para instalar o aplicativo,
-                    quando a instalação estiver disponível.
-                </span>
-            </div>
+            <p>1. Abra o aplicativo TERRAS RARAS no navegador.</p>
 
-            <div class="step">
-                <span class="step-number">2</span>
-                <span>
-                    Abra o aplicativo instalado no seu dispositivo.
-                </span>
-            </div>
+            <p>2. Utilize a opção de instalar aplicativo, quando disponível.</p>
 
-            <div class="step">
-                <span class="step-number">3</span>
-                <span>
-                    Depois de instalar, confirme a conclusão
-                    para solicitar sua recompensa.
-                </span>
-            </div>
+            <p>3. Depois, retorne a esta tela para concluir a missão.</p>
+
+            <p>
+                <strong>Importante:</strong> nesta versão demonstrativa,
+                a conclusão é confirmada manualmente. O aplicativo ainda
+                não verifica automaticamente a instalação.
+            </p>
 
         </div>
 
-        <button
-            id="completeMissionButton"
-            class="primary-button"
-            type="button"
-            onclick="completeMission()"
-        >
+        <button class="btn btn-green" id="installButton" onclick="installApp()">
+            📲 INSTALAR APLICATIVO
+        </button>
+
+        <button class="btn" id="claimButton" onclick="completeMission()" style="margin-top:15px;">
             🏆 CONCLUIR MISSÃO E RECEBER 50 TR
         </button>
 
-        <p class="notice">
-            A recompensa desta demonstração é controlada
-            pelo navegador. A confirmação de instalação
-            ainda não é verificada por um servidor.
-        </p>
-
-        <footer class="footer">
-            © 2026 TERRAS RARAS
-        </footer>
+        <button class="btn btn-secondary" onclick="closeMission()">
+            VOLTAR PARA INÍCIO
+        </button>
 
     </section>
 
-</main>
+    <!-- RODAPÉ -->
+    <footer class="footer">
+        TERRAS RARAS © 2026
+        <br>
+        Sua carteira TR
+    </footer>
 
-<div id="toast" class="toast" aria-live="polite"></div>
+</div>
 
 <script>
-    // ============================
-    // SALDO E ARMAZENAMENTO
-    // ============================
+/* =====================================
+   CONFIGURAÇÃO DO SALDO
+===================================== */
 
-    const BALANCE_KEY = "terrasRarasBalance";
-    const MISSION_KEY = "terrasRarasInstallMission";
+// Mantém o saldo já salvo no navegador.
+// Se ainda não existir, começa com 600 TR.
+let balance = localStorage.getItem("terrasRarasBalance");
 
-    let savedBalance = localStorage.getItem(BALANCE_KEY);
+if (balance === null) {
+    balance = 600;
+    localStorage.setItem("terrasRarasBalance", balance);
+} else {
+    balance = Number(balance);
+}
 
-    let balance = savedBalance === null
-        ? 150
-        : Number(savedBalance);
+// Atualiza o saldo na tela.
+function updateBalance() {
+    document.getElementById("balance").textContent =
+        Number(balance).toLocaleString("pt-BR");
+}
 
-    if (!Number.isFinite(balance) || balance < 0) {
-        balance = 150;
+updateBalance();
+
+
+/* =====================================
+   ABRIR E FECHAR A MISSÃO
+===================================== */
+
+function openMission() {
+    document.getElementById("homePage").style.display = "none";
+    document.getElementById("missionPage").style.display = "block";
+
+    window.scrollTo(0, 0);
+}
+
+function closeMission() {
+    document.getElementById("missionPage").style.display = "none";
+    document.getElementById("homePage").style.display = "block";
+
+    window.scrollTo(0, 0);
+}
+
+
+/* =====================================
+   CONTROLE DA RECOMPENSA
+===================================== */
+
+let missionCompleted =
+    localStorage.getItem("terrasRarasInstallMission") === "true";
+
+function updateMissionButton() {
+    const button = document.getElementById("claimButton");
+
+    if (missionCompleted) {
+        button.textContent = "MISSÃO JÁ CONCLUÍDA";
+        button.disabled = true;
+        button.style.opacity = "0.6";
+        button.style.cursor = "not-allowed";
+    }
+}
+
+updateMissionButton();
+
+function completeMission() {
+
+    if (missionCompleted) {
+        alert("Você já concluiu esta missão!");
+        return;
     }
 
-    const balanceElement = document.getElementById("balance");
-
-    function updateBalance() {
-        balanceElement.textContent = balance;
-        localStorage.setItem(BALANCE_KEY, balance);
-    }
-
-    updateBalance();
-
-    // ============================
-    // NAVEGAÇÃO ENTRE AS PÁGINAS
-    // ============================
-
-    function openMission() {
-        document.getElementById("homePage").classList.remove("active");
-        document.getElementById("missionPage").classList.add("active");
-
-        window.scrollTo(0, 0);
-    }
-
-    function openHome() {
-        document.getElementById("missionPage").classList.remove("active");
-        document.getElementById("homePage").classList.add("active");
-
-        window.scrollTo(0, 0);
-        updateBalance();
-    }
-
-    // ============================
-    // NOTIFICAÇÕES
-    // ============================
-
-    function showToast(message) {
-        const toast = document.getElementById("toast");
-
-        toast.textContent = message;
-        toast.style.display = "block";
-
-        setTimeout(function () {
-            toast.style.display = "none";
-        }, 3000);
-    }
-
-    // ============================
-    // INSTALAÇÃO PWA
-    // ============================
-
-    let installPrompt = null;
-
-    const installButton = document.getElementById("installButton");
-
-    window.addEventListener("beforeinstallprompt", function(event) {
-        event.preventDefault();
-        installPrompt = event;
-
-        installButton.textContent = "📲 INSTALAR APLICATIVO";
-    });
-
-    async function installApp() {
-
-        if (!installPrompt) {
-            showToast(
-                "Use o menu do navegador e escolha 'Instalar aplicativo' ou 'Adicionar à tela inicial'."
-            );
-            return;
-        }
-
-        installPrompt.prompt();
-
-        const result = await installPrompt.userChoice;
-
-        if (result.outcome === "accepted") {
-            installButton.textContent = "✓ INSTALAÇÃO SOLICITADA";
-            showToast("Siga as instruções para concluir a instalação!");
-        } else {
-            showToast("Instalação não concluída.");
-        }
-
-        installPrompt = null;
-    }
-
-    // ============================
-    // CONCLUSÃO DA MISSÃO
-    // ============================
-
-    const completeButton = document.getElementById(
-        "completeMissionButton"
+    const confirmMission = confirm(
+        "Confirma que concluiu a missão de instalação? Você receberá 50 TR."
     );
 
-    function checkMission() {
-        if (localStorage.getItem(MISSION_KEY) === "completed") {
-            completeButton.disabled = true;
-            completeButton.textContent = "✓ MISSÃO JÁ CONCLUÍDA";
-        }
+    if (!confirmMission) {
+        return;
     }
 
-    function completeMission() {
+    // Adiciona a recompensa ao saldo.
+    balance = Number(balance) + 50;
 
-        if (localStorage.getItem(MISSION_KEY) === "completed") {
-            showToast("Você já recebeu esta recompensa!");
-            return;
+    localStorage.setItem("terrasRarasBalance", balance);
+    localStorage.setItem("terrasRarasInstallMission", "true");
+
+    missionCompleted = true;
+
+    updateBalance();
+    updateMissionButton();
+
+    alert("Parabéns! Você recebeu mais 50 TR!");
+
+    window.scrollTo(0, 0);
+}
+
+
+/* =====================================
+   INSTALAÇÃO DO APLICATIVO PWA
+===================================== */
+
+let deferredInstallPrompt = null;
+
+window.addEventListener("beforeinstallprompt", function(event) {
+
+    // Guarda o pedido de instalação para o botão.
+    event.preventDefault();
+    deferredInstallPrompt = event;
+
+});
+
+async function installApp() {
+
+    if (deferredInstallPrompt) {
+
+        deferredInstallPrompt.prompt();
+
+        const result = await deferredInstallPrompt.userChoice;
+
+        if (result.outcome === "accepted") {
+            alert("Ótimo! O navegador aceitou a instalação.");
+        } else {
+            alert("A instalação foi cancelada.");
         }
 
-        const confirmacao = confirm(
-            "Você instalou o aplicativo TERRAS RARAS?\n\n" +
-            "Ao confirmar, você receberá 50 TR."
-        );
+        deferredInstallPrompt = null;
 
-        if (!confirmacao) return;
-
-        balance += 50;
-
-        updateBalance();
-
-        localStorage.setItem(MISSION_KEY, "completed");
-
-        completeButton.disabled = true;
-        completeButton.textContent = "✓ MISSÃO CONCLUÍDA";
-
-        showToast("Parabéns! Você ganhou 50 TR!");
+    } else {
 
         alert(
-            "MISSÃO CONCLUÍDA!\n\n" +
-            "Você ganhou 50 TR!\n" +
-            "Seu saldo atual é de " + balance + " TR."
+            "Para instalar, abra o menu do navegador e procure a opção 'Instalar aplicativo' ou 'Adicionar à tela inicial'."
         );
 
     }
+}
 
-    checkMission();
 
-    // ============================
-    // REGISTRO DO SERVICE WORKER
-    // ============================
+/* =====================================
+   REGISTRO DO SERVICE WORKER
+===================================== */
 
-    if ("serviceWorker" in navigator) {
-        window.addEventListener("load", function() {
-            navigator.serviceWorker.register("./sw.js")
-                .catch(function(error) {
-                    console.log("Service Worker:", error);
-                });
-        });
-    }
+if ("serviceWorker" in navigator) {
+
+    window.addEventListener("load", function() {
+
+        navigator.serviceWorker.register("./sw.js")
+            .catch(function(error) {
+                console.log("Erro ao registrar o Service Worker:", error);
+            });
+
+    });
+
+}
 </script>
-
-</body>
-</html>
-
-<!DOCTYPE html>
-<html lang="pt-BR">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
-    <title>Terras Raras - Sua carteira TR</title>
-
-    <meta name="description" content="Acompanhe seu saldo de Terras Raras e conquiste novos produtos.">
-    <meta name="theme-color" content="#101b16">
-
-    <link rel="manifest" href="manifest.json">
-    <link rel="icon" href="icon.svg" type="image/svg+xml">
-    <link rel="stylesheet" href="style.css">
-
-    <style>
-        /* BOTÃO DE ÁUDIO */
-        .audio-container {
-            text-align: center;
-            margin: 15px auto;
-        }
-
-        .audio-button {
-            background: linear-gradient(135deg, #ffe34d, #f5ad00);
-            color: #142015;
-            border: 2px solid #ffe77b;
-            border-radius: 12px;
-            padding: 12px 22px;
-            width: 90%;
-            max-width: 300px;
-            font-size: 14px;
-            font-weight: bold;
-            cursor: pointer;
-        }
-
-        /* BANNER DO APP DE NUTRIÇÃO */
-        .nutrition-banner {
-            position: relative;
-            overflow: hidden;
-            margin: 25px 12px;
-            padding: 25px 20px;
-            border-radius: 18px;
-            background: linear-gradient(135deg, #123d2c, #087c45);
-            border: 2px solid #d8b52a;
-            color: white;
-            text-align: center;
-            box-shadow: 0 5px 18px rgba(0,0,0,0.3);
-        }
-
-        .nutrition-tag {
-            display: inline-block;
-            background: #d9b52a;
-            color: #142015;
-            padding: 6px 12px;
-            border-radius: 20px;
-            font-size: 11px;
-            font-weight: bold;
-            margin-bottom: 12px;
-        }
-
-        .nutrition-icon {
-            font-size: 55px;
-            margin-bottom: 8px;
-        }
-
-        .nutrition-banner h2 {
-            color: #ffe34d;
-            font-size: 23px;
-            margin: 8px 0;
-        }
-
-        .nutrition-banner p {
-            color: #ffffff;
-            font-size: 14px;
-            line-height: 1.5;
-            margin: 10px 0;
-        }
-
-        .nutrition-price {
-            margin: 18px 0;
-            font-size: 27px;
-            font-weight: 900;
-            color: #ffe34d;
-        }
-
-        .nutrition-price small {
-            font-size: 14px;
-            color: white;
-        }
-
-        .nutrition-buy-button {
-            display: block;
-            width: 100%;
-            padding: 15px 10px;
-            border: none;
-            border-radius: 12px;
-            background: linear-gradient(135deg, #ffe34d, #f4ae00);
-            color: #172116;
-            font-size: 15px;
-            font-weight: 900;
-            cursor: pointer;
-            box-shadow: 0 4px 10px rgba(0,0,0,0.3);
-        }
-
-        .nutrition-buy-button:active {
-            transform: scale(0.98);
-        }
-
-        .nutrition-buy-button:disabled {
-            opacity: 0.6;
-            cursor: not-allowed;
-        }
-
-        .nutrition-note {
-            text-align: center;
-            font-size: 11px !important;
-            opacity: 0.85;
-            margin-top: 12px !important;
-        }
-
-        @media (max-width: 600px) {
-            .nutrition-banner {
-                margin: 20px 8px;
-                padding: 22px 15px;
-            }
-
-            .nutrition-banner h2 {
-                font-size: 20px;
-            }
-        }
-    </style>
-</head>
-
-<body>
-
-    <main class="app-container">
-
-        <!-- CABEÇALHO -->
-        <header class="top-header">
-
-            <div class="logo-area">
-                <h1>TERRAS <span>RARAS</span></h1>
-                <p>SUA JORNADA COMEÇA AQUI</p>
-            </div>
-
-            <!-- SALDO DO USUÁRIO -->
-            <div class="balance-card">
-
-                <span class="balance-label">SEU SALDO ATUAL</span>
-
-                <div class="balance-value">
-                    <strong id="balance">150</strong>
-                    <span>TR</span>
-                </div>
-
-                <p class="balance-note" id="balance-note">
-                    Você tinha 100 TR e acabou de ganhar mais 50 TR!
-                </p>
-
-                <!-- BOTÃO DE ÁUDIO -->
-                <div class="audio-container">
-                    <button id="btnAudio" class="audio-button" type="button">
-                        🔊 OUVIR MENSAGEM
-                    </button>
-                </div>
-
-            </div>
-
-        </header>
-
-        <!-- CONTEÚDO PRINCIPAL -->
-        <section class="main-content">
-
-            <!-- IMAGEM DE TERRAS RARAS -->
-            <div class="banner-image">
-                <img
-                    src="assets/terras-raras-banner.jpg"
-                    alt="Minerais e elementos de terras raras"
-                >
-            </div>
-
-            <div class="welcome-text">
-                <h2>Bem-vindo ao mundo das Terras Raras!</h2>
-
-                <p>
-                    Explore o aplicativo, participe das atividades
-                    e acompanhe sua evolução acumulando TR.
-                </p>
-            </div>
-
-            <!-- BOTÃO PARA GANHAR TR -->
-            <div class="earn-area">
-
-                <button id="earn-button" class="earn-button" type="button">
-                    🪙 GANHE MAIS 50 TR
-                </button>
-
-                <p>
-                    Participe e continue aumentando seu saldo!
-                </p>
-
-            </div>
-
-            <!-- ================================= -->
-            <!-- BANNER DO APP DE NUTRIÇÃO -->
-            <!-- ================================= -->
-
-            <section class="nutrition-banner">
-
-                <span class="nutrition-tag">
-                    PRODUTO DIGITAL
-                </span>
-
-                <div class="nutrition-icon">🥗</div>
-
-                <h2>APP DE NUTRIÇÃO</h2>
-
-                <p>
-                    Conheça nosso aplicativo de nutrição!
-                    Organize sua alimentação, consulte informações
-                    nutricionais e descubra receitas personalizadas.
-                </p>
-
-                <div class="nutrition-price">
-                    500 TR
-                    <small>/ compra única</small>
-                </div>
-
-                <button
-                    id="buyNutrition"
-                    class="nutrition-buy-button"
-                    type="button"
-                >
-                    🛒 COMPRAR POR 500 TR
-                </button>
-
-                <p class="nutrition-note">
-                    O valor será descontado do seu saldo de TR.
-                </p>
-
-            </section>
-
-        </section>
-
-        <!-- MENU INFERIOR -->
-        <nav class="bottom-menu">
-
-            <button class="nav-item active" type="button" data-page="inicio">
-                <span>🏠</span>
-                <small>Início</small>
-            </button>
-
-            <button class="nav-item" type="button" data-page="missoes">
-                <span>🎯</span>
-                <small>Missões</small>
-            </button>
-
-            <button class="nav-item" type="button" data-page="conquistas">
-                <span>🏆</span>
-                <small>Conquistas</small>
-            </button>
-
-            <button class="nav-item" type="button" data-page="historico">
-                <span>📋</span>
-                <small>Histórico</small>
-            </button>
-
-            <button class="nav-item" type="button" data-page="configuracoes">
-                <span>⚙️</span>
-                <small>Configurações</small>
-            </button>
-
-        </nav>
-
-        <!-- RODAPÉ -->
-        <footer class="app-footer">
-
-            <h3>Continue ganhando Terras Raras!</h3>
-
-            <p>
-                Participe das atividades e descubra novas maneiras
-                de conquistar TR.
-            </p>
-
-            <button id="footer-earn-button" type="button">
-                QUERO GANHAR TR
-            </button>
-
-            <p class="footer-copy">
-                © 2026 TERRAS RARAS - Todos os direitos reservados.
-            </p>
-
-        </footer>
-
-    </main>
-
-    <!-- NOTIFICAÇÕES -->
-    <div id="toast" class="toast" aria-live="polite"></div>
-
-    <!-- JAVASCRIPT PRINCIPAL -->
-    <script src="app.js"></script>
-
-    <!-- SISTEMA DE ÁUDIO -->
-    <script>
-        document.addEventListener("DOMContentLoaded", function () {
-
-            const botaoAudio = document.getElementById("btnAudio");
-            const saldoTela = document.getElementById("balance");
-
-            if (!botaoAudio || !saldoTela) return;
-
-            botaoAudio.addEventListener("click", function () {
-
-                if (!("speechSynthesis" in window)) {
-                    alert("Seu navegador não suporta reprodução de voz.");
-                    return;
-                }
-
-                window.speechSynthesis.cancel();
-
-                const valorTR = saldoTela.textContent.trim();
-
-                const mensagem =
-                    "Olá! Bem-vindo ao Terras Raras! " +
-                    "Seu saldo atual é de " + valorTR + " TR. " +
-                    "Continue participando e conquistando mais Terras Raras!";
-
-                const fala = new SpeechSynthesisUtterance(mensagem);
-
-                fala.lang = "pt-BR";
-                fala.rate = 0.95;
-                fala.pitch = 1;
-                fala.volume = 1;
-
-                botaoAudio.textContent = "🔊 REPRODUZINDO...";
-                botaoAudio.disabled = true;
-
-                fala.onend = function () {
-                    botaoAudio.textContent = "🔊 OUVIR MENSAGEM";
-                    botaoAudio.disabled = false;
-                };
-
-                fala.onerror = function () {
-                    botaoAudio.textContent = "🔊 OUVIR MENSAGEM";
-                    botaoAudio.disabled = false;
-                };
-
-                window.speechSynthesis.speak(fala);
-
-            });
-
-        });
-    </script>
-
-    <!-- SISTEMA DE COMPRA DO APP DE NUTRIÇÃO -->
-    <script>
-        document.addEventListener("DOMContentLoaded", function () {
-
-            const botaoCompra = document.getElementById("buyNutrition");
-            const saldoTela = document.getElementById("balance");
-
-            const PRECO_NUTRICAO = 500;
-            const CHAVE_SALDO = "terrasRarasBalance";
-
-            if (!botaoCompra || !saldoTela) return;
-
-            botaoCompra.addEventListener("click", function () {
-
-                let saldoAtual = Number(
-                    localStorage.getItem(CHAVE_SALDO)
-                );
-
-                if (!Number.isFinite(saldoAtual)) {
-                    saldoAtual = Number(saldoTela.textContent) || 0;
-                }
-
-                if (saldoAtual < PRECO_NUTRICAO) {
-
-                    alert(
-                        "SALDO INSUFICIENTE!\n\n" +
-                        "Você precisa de 500 TR para comprar o APP DE NUTRIÇÃO.\n" +
-                        "Seu saldo atual é de " + saldoAtual + " TR."
-                    );
-
-                    return;
-                }
-
-                const confirmar = confirm(
-                    "CONFIRMAR COMPRA?\n\n" +
-                    "Produto: APP DE NUTRIÇÃO\n" +
-                    "Preço: 500 TR\n" +
-                    "Seu saldo atual: " + saldoAtual + " TR\n\n" +
-                    "Deseja continuar?"
-                );
-
-                if (!confirmar) return;
-
-                const novoSaldo = saldoAtual - PRECO_NUTRICAO;
-
-                localStorage.setItem(CHAVE_SALDO, novoSaldo);
-
-                saldoTela.textContent = novoSaldo;
-
-                botaoCompra.textContent = "✓ COMPRA REALIZADA";
-                botaoCompra.disabled = true;
-
-                alert(
-                    "COMPRA REALIZADA!\n\n" +
-                    "Você adquiriu o APP DE NUTRIÇÃO por 500 TR.\n" +
-                    "Seu novo saldo é de " + novoSaldo + " TR."
-                );
-
-            });
-
-        });
-    </script>
 
 </body>
 </html>
