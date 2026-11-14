@@ -27,24 +27,3 @@ body{background:var(--bg);color:var(--text);font-family:Arial,Helvetica,sans-ser
 .footer{padding:24px 15px;text-align:center;color:#789889;font-size:12px;border-top:1px solid #1d5039}
 @media(min-width:650px){.topbar{flex-direction:row;align-items:center;justify-content:space-between}.brand{border-top:0;padding-top:0}.wallet{order:0}.brand{order:1}}
 @media(max-width:600px){.content{padding:16px}.brand h1{font-size:20px}.balance{font-size:29px}.mission-card h2,.mission-banner h2{font-size:22px}}
-.audio-missao {
-  text-align: center;
-  margin: 20px auto;
-}
-
-#ouvirMissao {
-  background: linear-gradient(135deg, #ffd700, #ffae00);
-  color: #071b10;
-  border: 2px solid #ffe76b;
-  border-radius: 15px;
-  padding: 16px 24px;
-  font-size: 15px;
-  font-weight: 900;
-  cursor: pointer;
-  width: 100%;
-  box-shadow: 0 4px 15px #d9a50055;
-}
-
-#ouvirMissao:active {
-  transform: scale(0.97);
-}
