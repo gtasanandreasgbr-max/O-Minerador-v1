@@ -1,63 +1,147 @@
+
 <!DOCTYPE html>
 <html lang="pt-BR">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta name="theme-color" content="#09251b">
-  <meta name="description" content="Acompanhe seu saldo de Terras Raras e conquiste mais TR.">
-  <title>Terras Raras — Sua carteira TR</title>
-  <link rel="manifest" href="manifest.json">
-  <link rel="icon" href="icon.svg" type="image/svg+xml">
-  <link rel="stylesheet" href="style.css">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Terras Raras - Meu Aplicativo</title>
+
+    <meta name="description" content="Aplicativo Terras Raras - acompanhe seu saldo de TR e participe para ganhar mais.">
+    <meta name="theme-color" content="#101b16">
+
+    <!-- Configuração para instalação como aplicativo -->
+    <link rel="manifest" href="manifest.json">
+    <link rel="icon" href="icon.svg" type="image/svg+xml">
+
+    <!-- Arquivo de estilos -->
+    <link rel="stylesheet" href="style.css">
 </head>
+
 <body>
-  <main class="app">
-    <header class="topbar">
-      <a class="brand" href="./" aria-label="Terras Raras - início">
-        <img src="icon.svg" alt="" class="brand-icon">
-        <span><strong>TERRAS <em>RARAS</em></strong><small>Seu futuro vale mais!</small></span>
-      </a>
-      <div class="wallet-label">CARTEIRA TR</div>
-    </header>
 
-    <section class="balance-card" aria-label="Saldo da carteira">
-      <div class="coin-mark" aria-hidden="true">TR</div>
-      <div class="balance-info">
-        <p class="eyebrow">SEU SALDO ATUAL</p>
-        <div class="balance-line"><strong id="balance">150</strong><span>TR</span></div>
-        <p class="balance-note" id="balance-note">Você tinha 100 TR e acabou de ganhar mais 50 TR!</p>
-      </div>
-    </section>
+    <main class="app-container">
 
-    <section class="hero">
-      <img src="assets/terras-raras-banner.jpg" alt="Rochas e minerais que representam as terras raras em uma área de mineração" class="hero-image">
-      <div class="hero-content">
-        <p class="hero-kicker">SEU PRÓXIMO OBJETIVO COMEÇA AQUI</p>
-        <h1>Ganhe mais <span>50 TR!</span></h1>
-        <p>Participe e aumente seu saldo de Terras Raras.</p>
-        <button class="primary-button" id="earn-button" type="button">
-          <span aria-hidden="true">🎁</span> GANHE MAIS 50 TR
-        </button>
-        <p class="button-feedback" id="feedback" role="status" aria-live="polite"></p>
-      </div>
-    </section>
+        <!-- CABEÇALHO E SALDO -->
+        <header class="top-header">
 
-    <button class="footer-banner" id="footer-earn-button" type="button">
-      <span class="banner-icon" aria-hidden="true">⬆</span>
-      <span class="banner-copy"><strong>Aumente suas <em>TR!</em></strong><small>Continue participando e conquiste mais Terras Raras.</small></span>
-      <span class="banner-reward">+50 TR</span>
-    </button>
+            <div class="logo-area">
+                <h1>TERRAS <span>RARAS</span></h1>
+                <p>SUA JORNADA COMEÇA AQUI</p>
+            </div>
 
-    <footer class="bottom-nav" aria-label="Navegação principal">
-      <a class="nav-item active" href="#inicio" aria-current="page"><span>⌂</span>Início</a>
-      <button class="nav-item" type="button" data-section="Missões"><span>♧</span>Missões</button>
-      <button class="nav-item" type="button" data-section="Conquistas"><span>★</span>Conquistas</button>
-      <button class="nav-item" type="button" data-section="Histórico"><span>▥</span>Histórico</button>
-      <button class="nav-item" type="button" data-section="Configurações"><span>⚙</span>Configurações</button>
-    </footer>
-  </main>
+            <div class="balance-card">
+                <span class="balance-label">SEU SALDO ATUAL</span>
 
-  <div class="toast" id="toast" role="status" aria-live="polite"></div>
-  <script src="app.js"></script>
+                <div class="balance-value">
+                    <strong id="balance">150</strong>
+                    <span>TR</span>
+                </div>
+
+                <p class="balance-note" id="balance-note">
+                    Você tinha 100 TR e acabou de ganhar mais 50 TR!
+                </p>
+
+                <!-- BOTÃO PARA OUVIR A MENSAGEM -->
+                <div class="audio-container">
+                    <button id="btnAudio" class="audio-button" type="button">
+                        🔊 OUVIR MENSAGEM
+                    </button>
+                </div>
+
+            </div>
+
+        </header>
+
+        <!-- IMAGEM PRINCIPAL -->
+        <section class="main-content">
+
+            <div class="banner-image">
+                <img
+                    src="assets/terras-raras-banner.jpg"
+                    alt="Minerais e elementos de terras raras"
+                >
+            </div>
+
+            <div class="welcome-text">
+                <h2>Bem-vindo ao mundo das Terras Raras!</h2>
+
+                <p>
+                    Explore o aplicativo, participe das atividades
+                    e acompanhe sua evolução acumulando TR.
+                </p>
+            </div>
+
+            <!-- BOTÃO PARA GANHAR TR -->
+            <div class="earn-area">
+                <button id="earn-button" class="earn-button" type="button">
+                    🪙 GANHE MAIS 50 TR
+                </button>
+
+                <p>
+                    Participe e continue aumentando seu saldo!
+                </p>
+            </div>
+
+        </section>
+
+        <!-- MENU DE NAVEGAÇÃO -->
+        <nav class="bottom-menu">
+
+            <button class="nav-item active" type="button" data-page="inicio">
+                <span>🏠</span>
+                <small>Início</small>
+            </button>
+
+            <button class="nav-item" type="button" data-page="missoes">
+                <span>🎯</span>
+                <small>Missões</small>
+            </button>
+
+            <button class="nav-item" type="button" data-page="conquistas">
+                <span>🏆</span>
+                <small>Conquistas</small>
+            </button>
+
+            <button class="nav-item" type="button" data-page="historico">
+                <span>📋</span>
+                <small>Histórico</small>
+            </button>
+
+            <button class="nav-item" type="button" data-page="configuracoes">
+                <span>⚙️</span>
+                <small>Configurações</small>
+            </button>
+
+        </nav>
+
+        <!-- MENSAGEM INFERIOR -->
+        <footer class="app-footer">
+
+            <h3>Continue ganhando Terras Raras!</h3>
+
+            <p>
+                Participe das atividades e descubra novas maneiras
+                de conquistar TR.
+            </p>
+
+            <button id="footer-earn-button" type="button">
+                QUERO GANHAR TR
+            </button>
+
+            <p class="footer-copy">
+                © 2026 TERRAS RARAS - Todos os direitos reservados.
+            </p>
+
+        </footer>
+
+    </main>
+
+    <!-- MENSAGEM DE NOTIFICAÇÃO -->
+    <div id="toast" class="toast" aria-live="polite"></div>
+
+    <!-- ARQUIVO PRINCIPAL JAVASCRIPT -->
+    <script src="app.js"></script>
+
 </body>
 </html>
