@@ -44,10 +44,11 @@
             background: linear-gradient(135deg, #123d2c, #087c45);
             border: 2px solid #d8b52a;
             color: white;
+            text-align: center;
             box-shadow: 0 5px 18px rgba(0,0,0,0.3);
         }
 
-        .nutrition-banner .nutrition-tag {
+        .nutrition-tag {
             display: inline-block;
             background: #d9b52a;
             color: #142015;
@@ -58,7 +59,7 @@
             margin-bottom: 12px;
         }
 
-        .nutrition-banner .nutrition-icon {
+        .nutrition-icon {
             font-size: 55px;
             margin-bottom: 8px;
         }
@@ -118,7 +119,6 @@
             margin-top: 12px !important;
         }
 
-        /* AJUSTES PARA CELULAR */
         @media (max-width: 600px) {
             .nutrition-banner {
                 margin: 20px 8px;
@@ -203,7 +203,7 @@
             </div>
 
             <!-- ================================= -->
-            <!-- LOJA: APLICATIVO DE NUTRIÇÃO -->
+            <!-- BANNER DO APP DE NUTRIÇÃO -->
             <!-- ================================= -->
 
             <section class="nutrition-banner">
@@ -212,9 +212,7 @@
                     PRODUTO DIGITAL
                 </span>
 
-                <div class="nutrition-icon">
-                    🥗
-                </div>
+                <div class="nutrition-icon">🥗</div>
 
                 <h2>APP DE NUTRIÇÃO</h2>
 
@@ -226,7 +224,7 @@
 
                 <div class="nutrition-price">
                     500 TR
-                    <small> / compra única</small>
+                    <small>/ compra única</small>
                 </div>
 
                 <button
@@ -300,7 +298,7 @@
     <!-- NOTIFICAÇÕES -->
     <div id="toast" class="toast" aria-live="polite"></div>
 
-    <!-- JAVASCRIPT PRINCIPAL DO APLICATIVO -->
+    <!-- JAVASCRIPT PRINCIPAL -->
     <script src="app.js"></script>
 
     <!-- SISTEMA DE ÁUDIO -->
@@ -310,48 +308,47 @@
             const botaoAudio = document.getElementById("btnAudio");
             const saldoTela = document.getElementById("balance");
 
-            if (botaoAudio && saldoTela) {
+            if (!botaoAudio || !saldoTela) return;
 
-                botaoAudio.addEventListener("click", function () {
+            botaoAudio.addEventListener("click", function () {
 
-                    if (!("speechSynthesis" in window)) {
-                        alert("Seu navegador não suporta áudio.");
-                        return;
-                    }
+                if (!("speechSynthesis" in window)) {
+                    alert("Seu navegador não suporta reprodução de voz.");
+                    return;
+                }
 
-                    window.speechSynthesis.cancel();
+                window.speechSynthesis.cancel();
 
-                    const valor = saldoTela.textContent.trim();
+                const valorTR = saldoTela.textContent.trim();
 
-                    const mensagem =
-                        "Olá! Bem-vindo ao Terras Raras! " +
-                        "Seu saldo atual é de " + valor + " TR. " +
-                        "Continue participando e conquistando mais Terras Raras!";
+                const mensagem =
+                    "Olá! Bem-vindo ao Terras Raras! " +
+                    "Seu saldo atual é de " + valorTR + " TR. " +
+                    "Continue participando e conquistando mais Terras Raras!";
 
-                    const fala = new SpeechSynthesisUtterance(mensagem);
+                const fala = new SpeechSynthesisUtterance(mensagem);
 
-                    fala.lang = "pt-BR";
-                    fala.rate = 0.95;
-                    fala.pitch = 1;
-                    fala.volume = 1;
+                fala.lang = "pt-BR";
+                fala.rate = 0.95;
+                fala.pitch = 1;
+                fala.volume = 1;
 
-                    botaoAudio.textContent = "🔊 REPRODUZINDO...";
-                    botaoAudio.disabled = true;
+                botaoAudio.textContent = "🔊 REPRODUZINDO...";
+                botaoAudio.disabled = true;
 
-                    fala.onend = function () {
-                        botaoAudio.textContent = "🔊 OUVIR MENSAGEM";
-                        botaoAudio.disabled = false;
-                    };
+                fala.onend = function () {
+                    botaoAudio.textContent = "🔊 OUVIR MENSAGEM";
+                    botaoAudio.disabled = false;
+                };
 
-                    fala.onerror = function () {
-                        botaoAudio.textContent = "🔊 OUVIR MENSAGEM";
-                        botaoAudio.disabled = false;
-                    };
+                fala.onerror = function () {
+                    botaoAudio.textContent = "🔊 OUVIR MENSAGEM";
+                    botaoAudio.disabled = false;
+                };
 
-                    window.speechSynthesis.speak(fala);
+                window.speechSynthesis.speak(fala);
 
-                });
-            }
+            });
 
         });
     </script>
@@ -378,11 +375,10 @@
                     saldoAtual = Number(saldoTela.textContent) || 0;
                 }
 
-                // Verifica se o usuário possui TR suficientes.
                 if (saldoAtual < PRECO_NUTRICAO) {
 
                     alert(
-                        "Saldo insuficiente!\n\n" +
+                        "SALDO INSUFICIENTE!\n\n" +
                         "Você precisa de 500 TR para comprar o APP DE NUTRIÇÃO.\n" +
                         "Seu saldo atual é de " + saldoAtual + " TR."
                     );
@@ -390,7 +386,6 @@
                     return;
                 }
 
-                // Confirma a compra.
                 const confirmar = confirm(
                     "CONFIRMAR COMPRA?\n\n" +
                     "Produto: APP DE NUTRIÇÃO\n" +
@@ -401,15 +396,12 @@
 
                 if (!confirmar) return;
 
-                // Desconta o valor do produto.
                 const novoSaldo = saldoAtual - PRECO_NUTRICAO;
 
                 localStorage.setItem(CHAVE_SALDO, novoSaldo);
 
-                // Atualiza o saldo exibido na tela.
                 saldoTela.textContent = novoSaldo;
 
-                // Atualiza o botão de compra.
                 botaoCompra.textContent = "✓ COMPRA REALIZADA";
                 botaoCompra.disabled = true;
 
