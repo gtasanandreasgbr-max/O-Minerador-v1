@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="theme-color" content="#06251a">
+  <meta name="description" content="TERRAS RARAS - Sua carteira TR">
+  <link rel="manifest" href="manifest.json">
+  <link rel="icon" href="icon.svg" type="image/svg+xml">
+  <link rel="stylesheet" href="style.css">
+  <title>TERRAS RARAS - Carteira TR</title>
+</head>
+<body>
+  <div class="container">
+    <header class="topbar">
+      <section class="wallet" aria-label="Saldo da carteira">
+        <div class="wallet-icon">TR</div>
+        <div>
+          <div class="wallet-label">SEU SALDO ATUAL</div>
+          <div class="balance"><span id="balance">600</span> <small>TR</small></div>
+          <p class="balance-note" id="balance-note">Seu saldo está atualizado.</p>
+        </div>
+      </section>
+      <div class="brand">
+        <div class="brand-symbol">TR</div>
+        <div><h1>TERRAS <span>RARAS</span></h1><p>Seu futuro vale mais!</p></div>
+      </div>
+    </header>
+
+    <main id="homePage">
+      <img class="main-banner" src="assets/terras-raras-banner.jpg" alt="Mineração e recursos minerais" onerror="this.classList.add('image-missing')">
+      <section class="content">
+        <h2>Bem-vindo à sua carteira TR!</h2>
+        <p class="intro">Acompanhe seu saldo, participe das missões e descubra novas oportunidades no universo TERRAS RARAS.</p>
+        <div class="audio-container">
+          <button class="audio-button" id="btnAudio" type="button">🔊 OUVIR MENSAGEM</button>
+        </div>
+        <article class="mission-card">
+          <div class="mission-icon">🎁</div>
+          <h2>GANHE MAIS 50 TR!</h2>
+          <p>Participe da missão de instalação do aplicativo e aumente seu saldo de Terras Raras.</p>
+          <button class="btn" id="openMissionButton" type="button">🎁 PARTICIPAR DA MISSÃO</button>
+        </article>
+      </section>
+    </main>
+
+    <main id="missionPage" hidden>
+      <section class="content mission-content">
+        <div class="mission-header"><h2>MISSÃO</h2><button class="back-button" id="backButton" type="button">← VOLTAR</button></div>
+        <article class="mission-banner">
+          <div class="big-icon">📲</div>
+          <h2>INSTALE O APLICATIVO</h2>
+          <p>Instale o TERRAS RARAS no seu dispositivo e participe da nossa missão especial.</p>
+          <div class="reward">+50 TR</div>
+          <p>Conclua a missão demonstrativa para adicionar 50 TR à sua carteira local.</p>
+        </article>
+        <article class="instructions">
+          <h3>COMO PARTICIPAR?</h3>
+          <p>1. Abra o TERRAS RARAS no navegador.</p>
+          <p>2. Toque em “Instalar aplicativo”, quando essa opção estiver disponível.</p>
+          <p>3. Retorne a esta tela para concluir a missão.</p>
+          <p><strong>Importante:</strong> nesta versão, a instalação não é verificada automaticamente. A confirmação é manual e o saldo fica salvo somente neste navegador.</p>
+        </article>
+        <button class="btn btn-green" id="installButton" type="button">📲 INSTALAR APLICATIVO</button>
+        <button class="btn" id="claimButton" type="button">🏆 CONCLUIR MISSÃO E RECEBER 50 TR</button>
+      </section>
+    </main>
+
+    <div class="toast" id="toast" role="status" aria-live="polite"></div>
+    <footer class="footer">TERRAS RARAS © 2026<br>Projeto demonstrativo — carteira TR local</footer>
+  </div>
+  <script src="app.js" defer></script>
+</body>
+</html>

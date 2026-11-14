@@ -1,0 +1,29 @@
+/* TERRAS RARAS — estilos da interface */
+:root{--bg:#03150f;--panel:#06251a;--panel2:#082b20;--gold:#ffd21c;--green:#12b85d;--text:#fff;--muted:#c2d3ca}
+*{box-sizing:border-box;margin:0;padding:0}
+[hidden]{display:none!important}
+body{background:var(--bg);color:var(--text);font-family:Arial,Helvetica,sans-serif;line-height:1.5}
+.container{width:100%;max-width:900px;min-height:100vh;margin:0 auto;background:var(--panel)}
+.topbar{padding:18px 22px;background:var(--panel2);border-bottom:1px solid #1d5039;display:flex;flex-direction:column;gap:18px}
+.wallet{display:flex;align-items:center;gap:12px;order:0}
+.wallet-icon,.brand-symbol{width:48px;height:48px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-weight:900;color:#603800;background:linear-gradient(145deg,#fff2a0,#e8a900,#9b5700);border:3px solid #ffdf55;flex:none}
+.wallet-label{font-size:12px;color:#c7d8cf;font-weight:bold;letter-spacing:.5px}
+.balance{color:var(--gold);font-size:32px;font-weight:900;line-height:1.15}
+.balance small{font-size:17px}
+.balance-note{font-size:11px;color:#c2d3ca;margin-top:4px}
+.brand{display:flex;align-items:center;gap:12px;border-top:1px solid #1d5039;padding-top:15px}
+.brand-symbol{width:42px;height:42px;background:linear-gradient(145deg,#ffe477,#d58b00);color:#573600}
+.brand h1{font-size:23px;line-height:1.2}.brand h1 span{color:var(--gold)}.brand p{font-size:11px;color:#b9d2c3}
+.main-banner{display:block;width:100%;height:auto;max-height:360px;object-fit:cover;background:linear-gradient(135deg,#174c32,#061b12);min-height:120px}
+.main-banner.image-missing{visibility:hidden;height:0;min-height:0}
+.content{padding:22px}.content>h2{font-size:20px;margin-bottom:8px}.intro{font-size:14px;color:var(--muted);margin-bottom:16px}
+.audio-container{text-align:center;margin:14px auto 20px}.audio-button{width:90%;max-width:300px;padding:13px 20px;border-radius:12px;border:2px solid #ffe77b;background:linear-gradient(135deg,#ffd21c,#f2a900);color:#172116;font-size:14px;font-weight:bold;cursor:pointer}
+.mission-card,.mission-banner{padding:25px 18px;text-align:center;border-radius:16px;border:1px solid #a87900;background:linear-gradient(145deg,#173d26,#071d14);box-shadow:0 8px 25px #0005}
+.mission-icon,.big-icon{font-size:45px;margin-bottom:10px}.mission-card h2,.mission-banner h2{color:var(--gold);font-size:25px;margin-bottom:10px}.mission-card p,.mission-banner p{font-size:14px;line-height:1.6;color:#e1e9e4;margin-bottom:18px}
+.btn{display:block;width:100%;padding:16px;border:0;border-radius:12px;background:linear-gradient(180deg,#ffe45a,#ffb900);color:#241800;font-size:15px;font-weight:900;cursor:pointer;text-align:center;box-shadow:0 4px 0 #986300;margin-top:14px}.btn:active{transform:translateY(2px);box-shadow:none}.btn-green{background:linear-gradient(180deg,#19c76b,#078d45);color:#fff;box-shadow:0 4px 0 #045b2b}
+.mission-header{display:flex;align-items:center;justify-content:space-between;margin-bottom:20px}.mission-header h2{color:var(--gold);font-size:23px}.back-button{background:#17432f;color:#fff;border:1px solid #4d8b68;padding:10px 15px;border-radius:8px;cursor:pointer;font-weight:bold}
+.mission-banner{margin-bottom:20px}.reward{color:var(--gold);font-size:36px;font-weight:900;margin:12px 0}.instructions{padding:20px;border-radius:12px;background:#0b3020;border:1px solid #245b3c;margin-bottom:20px}.instructions h3{color:var(--gold);margin-bottom:12px}.instructions p{color:#d4e1d9;font-size:14px;line-height:1.7;margin-bottom:9px}
+.toast{position:fixed;left:50%;bottom:20px;transform:translateX(-50%);width:max-content;max-width:90%;padding:12px 18px;border-radius:10px;background:#e9bd24;color:#1d1805;font-weight:bold;box-shadow:0 4px 20px #0008;display:none;z-index:10}.toast.show{display:block}
+.footer{padding:24px 15px;text-align:center;color:#789889;font-size:12px;border-top:1px solid #1d5039}
+@media(min-width:650px){.topbar{flex-direction:row;align-items:center;justify-content:space-between}.brand{border-top:0;padding-top:0}.wallet{order:0}.brand{order:1}}
+@media(max-width:600px){.content{padding:16px}.brand h1{font-size:20px}.balance{font-size:29px}.mission-card h2,.mission-banner h2{font-size:22px}}
