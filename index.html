@@ -7,48 +7,127 @@
 
     <title>Terras Raras - Sua carteira TR</title>
 
-    <meta name="description" content="Acompanhe seu saldo de Terras Raras e participe para ganhar mais TR.">
+    <meta name="description" content="Acompanhe seu saldo de Terras Raras e conquiste novos produtos.">
     <meta name="theme-color" content="#101b16">
 
     <link rel="manifest" href="manifest.json">
     <link rel="icon" href="icon.svg" type="image/svg+xml">
     <link rel="stylesheet" href="style.css">
 
-    <!-- ESTILO DO BOTÃO DE ÁUDIO -->
     <style>
+        /* BOTÃO DE ÁUDIO */
         .audio-container {
-            display: block !important;
-            width: 100%;
             text-align: center;
-            margin: 18px auto;
-            visibility: visible !important;
-            opacity: 1 !important;
+            margin: 15px auto;
         }
 
         .audio-button {
-            display: inline-block !important;
-            visibility: visible !important;
-            opacity: 1 !important;
             background: linear-gradient(135deg, #ffe34d, #f5ad00);
             color: #142015;
             border: 2px solid #ffe77b;
             border-radius: 12px;
-            padding: 14px 25px;
+            padding: 12px 22px;
             width: 90%;
             max-width: 300px;
-            font-size: 15px;
-            font-weight: 800;
+            font-size: 14px;
+            font-weight: bold;
             cursor: pointer;
-            box-shadow: 0 4px 12px rgba(0,0,0,0.3);
         }
 
-        .audio-button:active {
-            transform: scale(0.97);
+        /* BANNER DO APP DE NUTRIÇÃO */
+        .nutrition-banner {
+            position: relative;
+            overflow: hidden;
+            margin: 25px 12px;
+            padding: 25px 20px;
+            border-radius: 18px;
+            background: linear-gradient(135deg, #123d2c, #087c45);
+            border: 2px solid #d8b52a;
+            color: white;
+            box-shadow: 0 5px 18px rgba(0,0,0,0.3);
         }
 
-        .audio-button:disabled {
-            opacity: 0.7;
-            cursor: wait;
+        .nutrition-banner .nutrition-tag {
+            display: inline-block;
+            background: #d9b52a;
+            color: #142015;
+            padding: 6px 12px;
+            border-radius: 20px;
+            font-size: 11px;
+            font-weight: bold;
+            margin-bottom: 12px;
+        }
+
+        .nutrition-banner .nutrition-icon {
+            font-size: 55px;
+            margin-bottom: 8px;
+        }
+
+        .nutrition-banner h2 {
+            color: #ffe34d;
+            font-size: 23px;
+            margin: 8px 0;
+        }
+
+        .nutrition-banner p {
+            color: #ffffff;
+            font-size: 14px;
+            line-height: 1.5;
+            margin: 10px 0;
+        }
+
+        .nutrition-price {
+            margin: 18px 0;
+            font-size: 27px;
+            font-weight: 900;
+            color: #ffe34d;
+        }
+
+        .nutrition-price small {
+            font-size: 14px;
+            color: white;
+        }
+
+        .nutrition-buy-button {
+            display: block;
+            width: 100%;
+            padding: 15px 10px;
+            border: none;
+            border-radius: 12px;
+            background: linear-gradient(135deg, #ffe34d, #f4ae00);
+            color: #172116;
+            font-size: 15px;
+            font-weight: 900;
+            cursor: pointer;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.3);
+        }
+
+        .nutrition-buy-button:active {
+            transform: scale(0.98);
+        }
+
+        .nutrition-buy-button:disabled {
+            opacity: 0.6;
+            cursor: not-allowed;
+        }
+
+        .nutrition-note {
+            text-align: center;
+            font-size: 11px !important;
+            opacity: 0.85;
+            margin-top: 12px !important;
+        }
+
+        /* AJUSTES PARA CELULAR */
+        @media (max-width: 600px) {
+            .nutrition-banner {
+                margin: 20px 8px;
+                padding: 22px 15px;
+            }
+
+            .nutrition-banner h2 {
+                font-size: 20px;
+            }
         }
     </style>
 </head>
@@ -57,7 +136,7 @@
 
     <main class="app-container">
 
-        <!-- CABEÇALHO E SALDO -->
+        <!-- CABEÇALHO -->
         <header class="top-header">
 
             <div class="logo-area">
@@ -65,7 +144,7 @@
                 <p>SUA JORNADA COMEÇA AQUI</p>
             </div>
 
-            <!-- CARTEIRA TR -->
+            <!-- SALDO DO USUÁRIO -->
             <div class="balance-card">
 
                 <span class="balance-label">SEU SALDO ATUAL</span>
@@ -81,12 +160,7 @@
 
                 <!-- BOTÃO DE ÁUDIO -->
                 <div class="audio-container">
-                    <button
-                        id="btnAudio"
-                        class="audio-button"
-                        type="button"
-                        aria-label="Ouvir mensagem sobre seu saldo"
-                    >
+                    <button id="btnAudio" class="audio-button" type="button">
                         🔊 OUVIR MENSAGEM
                     </button>
                 </div>
@@ -95,9 +169,10 @@
 
         </header>
 
-        <!-- IMAGEM PRINCIPAL -->
+        <!-- CONTEÚDO PRINCIPAL -->
         <section class="main-content">
 
+            <!-- IMAGEM DE TERRAS RARAS -->
             <div class="banner-image">
                 <img
                     src="assets/terras-raras-banner.jpg"
@@ -117,11 +192,7 @@
             <!-- BOTÃO PARA GANHAR TR -->
             <div class="earn-area">
 
-                <button
-                    id="earn-button"
-                    class="earn-button"
-                    type="button"
-                >
+                <button id="earn-button" class="earn-button" type="button">
                     🪙 GANHE MAIS 50 TR
                 </button>
 
@@ -131,9 +202,50 @@
 
             </div>
 
+            <!-- ================================= -->
+            <!-- LOJA: APLICATIVO DE NUTRIÇÃO -->
+            <!-- ================================= -->
+
+            <section class="nutrition-banner">
+
+                <span class="nutrition-tag">
+                    PRODUTO DIGITAL
+                </span>
+
+                <div class="nutrition-icon">
+                    🥗
+                </div>
+
+                <h2>APP DE NUTRIÇÃO</h2>
+
+                <p>
+                    Conheça nosso aplicativo de nutrição!
+                    Organize sua alimentação, consulte informações
+                    nutricionais e descubra receitas personalizadas.
+                </p>
+
+                <div class="nutrition-price">
+                    500 TR
+                    <small> / compra única</small>
+                </div>
+
+                <button
+                    id="buyNutrition"
+                    class="nutrition-buy-button"
+                    type="button"
+                >
+                    🛒 COMPRAR POR 500 TR
+                </button>
+
+                <p class="nutrition-note">
+                    O valor será descontado do seu saldo de TR.
+                </p>
+
+            </section>
+
         </section>
 
-        <!-- MENU DE NAVEGAÇÃO -->
+        <!-- MENU INFERIOR -->
         <nav class="bottom-menu">
 
             <button class="nav-item active" type="button" data-page="inicio">
@@ -185,62 +297,128 @@
 
     </main>
 
-    <!-- NOTIFICAÇÃO -->
+    <!-- NOTIFICAÇÕES -->
     <div id="toast" class="toast" aria-live="polite"></div>
 
-    <!-- JAVASCRIPT PRINCIPAL -->
+    <!-- JAVASCRIPT PRINCIPAL DO APLICATIVO -->
     <script src="app.js"></script>
 
     <!-- SISTEMA DE ÁUDIO -->
     <script>
         document.addEventListener("DOMContentLoaded", function () {
 
-            const botao = document.getElementById("btnAudio");
-            const saldo = document.getElementById("balance");
+            const botaoAudio = document.getElementById("btnAudio");
+            const saldoTela = document.getElementById("balance");
 
-            if (!botao || !saldo) return;
+            if (botaoAudio && saldoTela) {
 
-            botao.addEventListener("click", function () {
+                botaoAudio.addEventListener("click", function () {
 
-                if (!("speechSynthesis" in window)) {
-                    alert("Seu navegador não suporta reprodução de voz.");
+                    if (!("speechSynthesis" in window)) {
+                        alert("Seu navegador não suporta áudio.");
+                        return;
+                    }
+
+                    window.speechSynthesis.cancel();
+
+                    const valor = saldoTela.textContent.trim();
+
+                    const mensagem =
+                        "Olá! Bem-vindo ao Terras Raras! " +
+                        "Seu saldo atual é de " + valor + " TR. " +
+                        "Continue participando e conquistando mais Terras Raras!";
+
+                    const fala = new SpeechSynthesisUtterance(mensagem);
+
+                    fala.lang = "pt-BR";
+                    fala.rate = 0.95;
+                    fala.pitch = 1;
+                    fala.volume = 1;
+
+                    botaoAudio.textContent = "🔊 REPRODUZINDO...";
+                    botaoAudio.disabled = true;
+
+                    fala.onend = function () {
+                        botaoAudio.textContent = "🔊 OUVIR MENSAGEM";
+                        botaoAudio.disabled = false;
+                    };
+
+                    fala.onerror = function () {
+                        botaoAudio.textContent = "🔊 OUVIR MENSAGEM";
+                        botaoAudio.disabled = false;
+                    };
+
+                    window.speechSynthesis.speak(fala);
+
+                });
+            }
+
+        });
+    </script>
+
+    <!-- SISTEMA DE COMPRA DO APP DE NUTRIÇÃO -->
+    <script>
+        document.addEventListener("DOMContentLoaded", function () {
+
+            const botaoCompra = document.getElementById("buyNutrition");
+            const saldoTela = document.getElementById("balance");
+
+            const PRECO_NUTRICAO = 500;
+            const CHAVE_SALDO = "terrasRarasBalance";
+
+            if (!botaoCompra || !saldoTela) return;
+
+            botaoCompra.addEventListener("click", function () {
+
+                let saldoAtual = Number(
+                    localStorage.getItem(CHAVE_SALDO)
+                );
+
+                if (!Number.isFinite(saldoAtual)) {
+                    saldoAtual = Number(saldoTela.textContent) || 0;
+                }
+
+                // Verifica se o usuário possui TR suficientes.
+                if (saldoAtual < PRECO_NUTRICAO) {
+
+                    alert(
+                        "Saldo insuficiente!\n\n" +
+                        "Você precisa de 500 TR para comprar o APP DE NUTRIÇÃO.\n" +
+                        "Seu saldo atual é de " + saldoAtual + " TR."
+                    );
+
                     return;
                 }
 
-                // Interrompe uma narração anterior.
-                window.speechSynthesis.cancel();
+                // Confirma a compra.
+                const confirmar = confirm(
+                    "CONFIRMAR COMPRA?\n\n" +
+                    "Produto: APP DE NUTRIÇÃO\n" +
+                    "Preço: 500 TR\n" +
+                    "Seu saldo atual: " + saldoAtual + " TR\n\n" +
+                    "Deseja continuar?"
+                );
 
-                // Consulta o saldo atualizado na tela.
-                const valorTR = saldo.textContent.trim();
+                if (!confirmar) return;
 
-                // Mensagem narrada.
-                const mensagem =
-                    "Olá! Bem-vindo ao Terras Raras! " +
-                    "Você tinha 100 Terras Raras e recebeu mais 50 TR. " +
-                    "Seu saldo atual é de " + valorTR + " TR. " +
-                    "Parabéns! Continue participando e conquiste mais Terras Raras!";
+                // Desconta o valor do produto.
+                const novoSaldo = saldoAtual - PRECO_NUTRICAO;
 
-                const fala = new SpeechSynthesisUtterance(mensagem);
+                localStorage.setItem(CHAVE_SALDO, novoSaldo);
 
-                fala.lang = "pt-BR";
-                fala.rate = 0.95;
-                fala.pitch = 1;
-                fala.volume = 1;
+                // Atualiza o saldo exibido na tela.
+                saldoTela.textContent = novoSaldo;
 
-                botao.textContent = "🔊 REPRODUZINDO...";
-                botao.disabled = true;
+                // Atualiza o botão de compra.
+                botaoCompra.textContent = "✓ COMPRA REALIZADA";
+                botaoCompra.disabled = true;
 
-                fala.onend = function () {
-                    botao.textContent = "🔊 OUVIR MENSAGEM";
-                    botao.disabled = false;
-                };
+                alert(
+                    "COMPRA REALIZADA!\n\n" +
+                    "Você adquiriu o APP DE NUTRIÇÃO por 500 TR.\n" +
+                    "Seu novo saldo é de " + novoSaldo + " TR."
+                );
 
-                fala.onerror = function () {
-                    botao.textContent = "🔊 OUVIR MENSAGEM";
-                    botao.disabled = false;
-                };
-
-                window.speechSynthesis.speak(fala);
             });
 
         });
