@@ -1,0 +1,361 @@
+
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="theme-color" content="#06251a">
+  <meta name="description" content="TERRAS RARAS - Página de Missões">
+  <title>TERRAS RARAS - Missões</title>
+
+  <style>
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      background: #041a12;
+      color: #fff;
+      font-family: Arial, sans-serif;
+      min-height: 100vh;
+      padding: 20px;
+    }
+
+    .container {
+      max-width: 650px;
+      margin: auto;
+    }
+
+    header {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 12px;
+      margin-bottom: 25px;
+      flex-wrap: wrap;
+    }
+
+    .logo {
+      color: #ffd700;
+      font-size: 23px;
+      font-weight: 900;
+    }
+
+    .logo span {
+      color: white;
+    }
+
+    .wallet {
+      background: #123d2a;
+      border: 1px solid #c9a52b;
+      padding: 12px 18px;
+      border-radius: 12px;
+    }
+
+    .wallet small {
+      color: #d7c47b;
+    }
+
+    .balance {
+      color: #ffd700;
+      font-size: 22px;
+      font-weight: bold;
+    }
+
+    .mission {
+      background: linear-gradient(145deg, #145335, #092b1c);
+      border: 1px solid #c9a52b;
+      border-radius: 20px;
+      padding: 25px;
+      text-align: center;
+      box-shadow: 0 8px 30px #0008;
+    }
+
+    .mission-icon {
+      font-size: 65px;
+      margin-bottom: 15px;
+    }
+
+    h1 {
+      color: #ffd700;
+      font-size: 26px;
+      margin-bottom: 12px;
+    }
+
+    .description {
+      color: #e2eadd;
+      line-height: 1.7;
+      margin: 15px 0;
+    }
+
+    .reward {
+      color: #ffd700;
+      font-size: 38px;
+      font-weight: 900;
+      margin: 20px;
+    }
+
+    .instructions {
+      background: #082619;
+      border: 1px solid #356c4d;
+      border-radius: 15px;
+      padding: 20px;
+      text-align: left;
+      margin-top: 20px;
+    }
+
+    .instructions h2 {
+      color: #ffd700;
+      margin-bottom: 15px;
+      font-size: 19px;
+    }
+
+    .instructions p {
+      margin: 12px 0;
+      line-height: 1.6;
+    }
+
+    button {
+      width: 100%;
+      padding: 16px;
+      border: none;
+      border-radius: 12px;
+      font-size: 15px;
+      font-weight: 900;
+      cursor: pointer;
+      margin-top: 13px;
+    }
+
+    .audio {
+      background: linear-gradient(135deg, #ffd700, #e8a900);
+      color: #092417;
+    }
+
+    .stop {
+      background: #263d32;
+      color: white;
+      border: 1px solid #54735d;
+    }
+
+    .install {
+      background: #16814b;
+      color: white;
+    }
+
+    .complete {
+      background: linear-gradient(135deg, #ffd700, #e9a500);
+      color: #102416;
+    }
+
+    .back {
+      background: transparent;
+      color: #fff;
+      border: 1px solid #52755f;
+    }
+
+    button:active {
+      transform: scale(.98);
+    }
+
+    .footer {
+      text-align: center;
+      color: #78917e;
+      margin-top: 25px;
+      font-size: 12px;
+    }
+
+    [hidden] {
+      display: none !important;
+    }
+  </style>
+</head>
+
+<body>
+<div class="container">
+
+  <header>
+    <div class="logo">TERRAS <span>RARAS</span></div>
+    <div class="wallet">
+      <small>SEU SALDO ATUAL</small>
+      <div class="balance">
+        <span id="balance">600</span> TR
+      </div>
+    </div>
+  </header>
+
+  <main>
+    <section class="mission">
+
+      <div class="mission-icon">📲</div>
+
+      <h1>MISSÃO ESPECIAL</h1>
+
+      <h2>INSTALE O APLICATIVO</h2>
+
+      <p class="description">
+        Bem-vindo ao TERRAS RARAS!
+        Participe da nossa missão especial.
+        Siga as instruções abaixo, instale o aplicativo
+        e conclua sua missão para receber sua recompensa.
+      </p>
+
+      <div class="reward">+50 TR</div>
+
+      <div class="instructions" id="instrucoes">
+
+        <h2>COMO PARTICIPAR?</h2>
+
+        <p>1. Abra o TERRAS RARAS no navegador.</p>
+
+        <p>2. Procure a opção instalar aplicativo.</p>
+
+        <p>3. Toque em instalar e aguarde a conclusão.</p>
+
+        <p>4. Retorne a esta página para concluir a missão.</p>
+
+        <p>
+          <strong>Importante:</strong>
+          A instalação não é verificada automaticamente.
+          A confirmação da missão é manual.
+        </p>
+
+      </div>
+
+      <button class="audio" id="ouvir">
+        🔊 OUVIR EXPLICAÇÃO DA MISSÃO
+      </button>
+
+      <button class="audio" id="ouvirPassos">
+        📋 OUVIR PASSO A PASSO
+      </button>
+
+      <button class="stop" id="parar">
+        ⏹ PARAR ÁUDIO
+      </button>
+
+      <button class="install" id="instalar">
+        📲 INSTALAR APLICATIVO
+      </button>
+
+      <button class="complete" id="concluir">
+        🏆 CONCLUIR MISSÃO E RECEBER 50 TR
+      </button>
+
+      <button class="back" onclick="history.back()">
+        ← VOLTAR
+      </button>
+
+    </section>
+  </main>
+
+  <div class="footer">
+    TERRAS RARAS © 2026<br>
+    Projeto demonstrativo — carteira TR local
+  </div>
+
+</div>
+
+<script>
+  const saldoInicial = 600;
+
+  let saldo = Number(
+    localStorage.getItem('terrasRarasSaldo')
+  );
+
+  if (!Number.isFinite(saldo) || saldo < 0) {
+    saldo = saldoInicial;
+    localStorage.setItem('terrasRarasSaldo', saldo);
+  }
+
+  document.getElementById('balance').textContent = saldo;
+
+  function falar(texto) {
+    if (!('speechSynthesis' in window)) {
+      alert('Seu navegador não suporta áudio.');
+      return;
+    }
+
+    speechSynthesis.cancel();
+
+    const voz = new SpeechSynthesisUtterance(texto);
+    voz.lang = 'pt-BR';
+    voz.rate = 0.9;
+    voz.pitch = 1.05;
+    voz.volume = 1;
+
+    const vozes = speechSynthesis.getVoices();
+    const brasileira = vozes.find(
+      v => v.lang.toLowerCase() === 'pt-br'
+    );
+
+    if (brasileira) voz.voice = brasileira;
+
+    speechSynthesis.speak(voz);
+  }
+
+  document.getElementById('ouvir').onclick = () => {
+    falar(
+      'Bem-vindo ao Terras Raras! Esta é sua missão especial. ' +
+      'Instale o aplicativo no seu dispositivo, siga as instruções ' +
+      'e conclua a missão para receber cinquenta TR. Boa sorte!'
+    );
+  };
+
+  document.getElementById('ouvirPassos').onclick = () => {
+    falar(
+      'Primeiro: abra o Terras Raras no navegador. ' +
+      'Segundo: procure a opção instalar aplicativo. ' +
+      'Terceiro: toque em instalar e aguarde a conclusão. ' +
+      'Quarto: retorne a esta página para concluir a missão. ' +
+      'A instalação não é verificada automaticamente.'
+    );
+  };
+
+  document.getElementById('parar').onclick = () => {
+    speechSynthesis.cancel();
+  };
+
+  let instalacaoPendente = null;
+
+  window.addEventListener('beforeinstallprompt', event => {
+    event.preventDefault();
+    instalacaoPendente = event;
+  });
+
+  document.getElementById('instalar').onclick = async () => {
+    if (!instalacaoPendente) {
+      alert(
+        'A instalação pode ser feita pelo menu do navegador, ' +
+        'na opção Adicionar à tela inicial ou Instalar aplicativo.'
+      );
+      return;
+    }
+
+    instalacaoPendente.prompt();
+    await instalacaoPendente.userChoice;
+    instalacaoPendente = null;
+  };
+
+  document.getElementById('concluir').onclick = () => {
+    if (localStorage.getItem('missaoTerrasRarasConcluida')) {
+      alert('Você já recebeu a recompensa desta missão!');
+      return;
+    }
+
+    saldo += 50;
+
+    localStorage.setItem('terrasRarasSaldo', saldo);
+    localStorage.setItem('missaoTerrasRarasConcluida', 'true');
+
+    document.getElementById('balance').textContent = saldo;
+
+    alert('Parabéns! Você recebeu 50 TR!');
+
+    falar('Parabéns! Missão concluída! Você recebeu cinquenta TR!');
+  };
+</script>
+
+</body>
+</html>
