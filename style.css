@@ -9,19 +9,10 @@
     color: #172116;
     border: 2px solid #ffe77b;
     border-radius: 12px;
-    padding: 14px 25px;
-    font-size: 16px;
+    padding: 13px 25px;
+    font-size: 15px;
     font-weight: bold;
     cursor: pointer;
     width: 90%;
-    max-width: 350px;
-    box-shadow: 0 4px 10px rgba(0,0,0,0.3);
-}
-
-.audio-button:active {
-    transform: scale(0.97);
-}
-
-.audio-button:hover {
-    filter: brightness(1.08);
+    max-width: 300px;
 }
