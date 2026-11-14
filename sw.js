@@ -18,3 +18,42 @@ self.addEventListener('fetch',event=>{
     return response;
   }).catch(()=>caches.match('./index.html'))));
 });
+// ÁUDIO DAS MISSÕES - TERRAS RARAS
+
+function iniciarAudioMissao() {
+  if (!("speechSynthesis" in window)) {
+    alert("Seu navegador não suporta áudio de voz.");
+    return;
+  }
+
+  window.speechSynthesis.cancel();
+
+  const mensagem = new SpeechSynthesisUtterance(
+    "Parabéns! Sua missão começou! " +
+    "Continue participando, complete suas tarefas " +
+    "e conquiste mais 50 TR em Terras Raras. " +
+    "Boa sorte!"
+  );
+
+  mensagem.lang = "pt-BR";
+  mensagem.rate = 0.95;
+  mensagem.pitch = 1.05;
+  mensagem.volume = 1;
+
+  const vozes = window.speechSynthesis.getVoices();
+  const voz = vozes.find(v => v.lang === "pt-BR");
+
+  if (voz) {
+    mensagem.voice = voz;
+  }
+
+  window.speechSynthesis.speak(mensagem);
+}
+
+document.addEventListener("DOMContentLoaded", function() {
+  const botao = document.getElementById("ouvirMissao");
+
+  if (botao) {
+    botao.addEventListener("click", iniciarAudioMissao);
+  }
+});
