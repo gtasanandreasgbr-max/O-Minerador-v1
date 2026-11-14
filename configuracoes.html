@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="theme-color" content="#07261B">
+  <meta name="description" content="Configurações de voz, PWA e carteira demonstrativa TERRAS RARAS.">
+  <title>Configurações — TERRAS RARAS</title>
+  <link rel="manifest" href="./manifest.json">
+  <link rel="icon" type="image/svg+xml" href="./assets/icon.svg">
+  <link rel="apple-touch-icon" href="./assets/icon-192.png">
+  <link rel="stylesheet" href="./style.css">
+</head>
+<body data-page="configuracoes">
+  <header class="app-header">
+    <div class="header-inner">
+      <a href="index.html" class="brand-group" aria-label="TERRAS RARAS Início">
+        <div class="brand-logo">TR</div>
+        <div class="brand-titles">
+          <div class="brand-name">TERRAS RARAS</div>
+          <p class="brand-slogan">Seu futuro vale mais!</p>
+        </div>
+      </a>
+      <div class="header-actions">
+        <div class="wallet-pill" aria-label="Carteira TR">
+          <div>
+            <span class="wallet-pill-label">Carteira TR</span>
+            <span class="wallet-pill-value" data-wallet-balance>600 TR</span>
+          </div>
+        </div>
+        <a href="index.html" class="btn-back" aria-label="Voltar para o início">← VOLTAR</a>
+      </div>
+    </div>
+  </header>
+  <nav class="desktop-nav" aria-label="Navegação principal">
+    <ul class="desktop-nav-list">
+      <li><a href="index.html" class="desktop-nav-link"><span>🏠</span><span>Início</span></a></li>
+      <li><a href="missao.html" class="desktop-nav-link"><span>🎯</span><span>Missões</span></a></li>
+      <li><a href="conquistas.html" class="desktop-nav-link"><span>🏆</span><span>Conquistas</span></a></li>
+      <li><a href="historico.html" class="desktop-nav-link"><span>📜</span><span>Histórico</span></a></li>
+      <li><a href="configuracoes.html" class="desktop-nav-link active"><span>⚙️</span><span>Configurações</span></a></li>
+    </ul>
+  </nav>
+
+  <nav class="mobile-bottom-nav" aria-label="Navegação inferior">
+    <a href="index.html" class="mobile-nav-item"><span class="nav-icon">🏠</span><span>Início</span></a>
+    <a href="missao.html" class="mobile-nav-item"><span class="nav-icon">🎯</span><span>Missões</span></a>
+    <a href="conquistas.html" class="mobile-nav-item"><span class="nav-icon">🏆</span><span>Conquistas</span></a>
+    <a href="historico.html" class="mobile-nav-item"><span class="nav-icon">📜</span><span>Histórico</span></a>
+    <a href="configuracoes.html" class="mobile-nav-item active"><span class="nav-icon">⚙️</span><span>Configurações</span></a>
+  </nav>
+
+  <main class="main-container">
+    <section class="card card-emerald">
+      <span class="badge badge-gold" style="margin-bottom:10px;">⚙️ PREFERÊNCIAS DO SISTEMA</span>
+      <h1 class="section-title" style="font-size:1.45rem;">Configurações TERRAS RARAS</h1>
+      <p class="section-desc" style="margin-bottom:0;">
+        Personalize a narração em português, verifique o status do aplicativo PWA e gerencie os dados locais.
+      </p>
+    </section>
+
+    <div class="grid-2">
+      <!-- Configurações de Áudio -->
+      <section class="card">
+        <h2 class="section-title">🔊 Narração por Voz (pt-BR)</h2>
+        <p class="section-desc">Ajuste a velocidade da leitura das mensagens e missões.</p>
+
+        <label for="voice-rate-select" style="display:block; font-size:0.86rem; font-weight:700; margin-bottom:6px; color:var(--text-secondary);">
+          Velocidade da Voz:
+        </label>
+        <select id="voice-rate-select" style="width:100%; padding:12px; border-radius:12px; background:#04120D; color:var(--text-primary); border:1px solid var(--border-subtle); font-size:0.95rem; margin-bottom:14px;">
+          <option value="0.85">0.85x — Mais pausada</option>
+          <option value="1">1.0x — Normal (Padrão)</option>
+          <option value="1.15">1.15x — Dinâmica</option>
+        </select>
+
+        <button type="button" id="btn-test-voice" class="btn btn-emerald btn-block">
+          🔊 TESTAR NARRAÇÃO AGORA
+        </button>
+        <div class="audio-status-bar" aria-live="polite">
+          <span id="audio-status-text">Pronto para teste de voz.</span>
+        </div>
+      </section>
+
+      <!-- Status PWA e Gerenciamento de Dados -->
+      <section class="card">
+        <h2 class="section-title">📲 Aplicativo PWA &amp; Dados Locais</h2>
+        <p id="pwa-status-text" class="section-desc">Verificando modo de execução...</p>
+
+        <div style="display:flex; flex-direction:column; gap:10px;">
+          <button type="button" data-pwa-install-btn class="btn btn-gold btn-block">
+            📲 INSTALAR APLICATIVO
+          </button>
+          <button type="button" id="btn-reset-wallet" class="btn btn-danger btn-block">
+            🔄 RESTAURAR SALDO DEMONSTRATIVO (600 TR)
+          </button>
+        </div>
+
+        <div id="manual-install-guide" class="notice-box" style="display:none;">
+          <strong>Instalação manual:</strong> Abra o menu do navegador e escolha <strong>"Instalar aplicativo"</strong> ou <strong>"Adicionar à Tela de Início"</strong>.
+        </div>
+      </section>
+    </div>
+  </main>
+
+  <footer class="disclaimer-footer">
+    <p>Aviso: TR é uma unidade demonstrativa interna do aplicativo TERRAS RARAS. As recompensas simuladas não representam dinheiro real nem crédito financeiro garantido.</p>
+  </footer>
+  <script src="./app.js"></script>
+</body>
+</html>

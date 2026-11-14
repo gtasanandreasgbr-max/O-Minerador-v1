@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="theme-color" content="#07261B">
+  <meta name="description" content="Histórico de recompensas e missões concluídas no TERRAS RARAS.">
+  <title>Histórico — TERRAS RARAS</title>
+  <link rel="manifest" href="./manifest.json">
+  <link rel="icon" type="image/svg+xml" href="./assets/icon.svg">
+  <link rel="apple-touch-icon" href="./assets/icon-192.png">
+  <link rel="stylesheet" href="./style.css">
+</head>
+<body data-page="historico">
+  <header class="app-header">
+    <div class="header-inner">
+      <a href="index.html" class="brand-group" aria-label="TERRAS RARAS Início">
+        <div class="brand-logo">TR</div>
+        <div class="brand-titles">
+          <div class="brand-name">TERRAS RARAS</div>
+          <p class="brand-slogan">Seu futuro vale mais!</p>
+        </div>
+      </a>
+      <div class="header-actions">
+        <div class="wallet-pill" aria-label="Carteira TR">
+          <div>
+            <span class="wallet-pill-label">Carteira TR</span>
+            <span class="wallet-pill-value" data-wallet-balance>600 TR</span>
+          </div>
+        </div>
+        <a href="index.html" class="btn-back" aria-label="Voltar para o início">← VOLTAR</a>
+      </div>
+    </div>
+  </header>
+  <nav class="desktop-nav" aria-label="Navegação principal">
+    <ul class="desktop-nav-list">
+      <li><a href="index.html" class="desktop-nav-link"><span>🏠</span><span>Início</span></a></li>
+      <li><a href="missao.html" class="desktop-nav-link"><span>🎯</span><span>Missões</span></a></li>
+      <li><a href="conquistas.html" class="desktop-nav-link"><span>🏆</span><span>Conquistas</span></a></li>
+      <li><a href="historico.html" class="desktop-nav-link active"><span>📜</span><span>Histórico</span></a></li>
+      <li><a href="configuracoes.html" class="desktop-nav-link"><span>⚙️</span><span>Configurações</span></a></li>
+    </ul>
+  </nav>
+
+  <nav class="mobile-bottom-nav" aria-label="Navegação inferior">
+    <a href="index.html" class="mobile-nav-item"><span class="nav-icon">🏠</span><span>Início</span></a>
+    <a href="missao.html" class="mobile-nav-item"><span class="nav-icon">🎯</span><span>Missões</span></a>
+    <a href="conquistas.html" class="mobile-nav-item"><span class="nav-icon">🏆</span><span>Conquistas</span></a>
+    <a href="historico.html" class="mobile-nav-item active"><span class="nav-icon">📜</span><span>Histórico</span></a>
+    <a href="configuracoes.html" class="mobile-nav-item"><span class="nav-icon">⚙️</span><span>Configurações</span></a>
+  </nav>
+
+  <main class="main-container">
+    <section class="card card-emerald">
+      <div style="display:flex; justify-content:space-between; align-items:center; flex-wrap:wrap; gap:12px; margin-bottom:14px;">
+        <div>
+          <span class="badge badge-emerald" style="margin-bottom:8px;">📜 EXTRATO DEMONSTRATIVO</span>
+          <h1 class="section-title" style="font-size:1.45rem; margin-bottom:0;">Histórico de Recompensas</h1>
+        </div>
+        <div class="reward-highlight-box" style="margin:0; padding:10px 16px;">
+          <span style="font-size:0.8rem; color:var(--text-secondary);">Saldo Atual:</span>
+          <strong style="font-size:1.2rem; color:var(--gold-light);" data-wallet-balance>600 TR</strong>
+        </div>
+      </div>
+
+      <div id="history-list-container" class="history-list" aria-live="polite">
+        <!-- Renderizado dinamicamente via app.js -->
+      </div>
+    </section>
+  </main>
+
+  <footer class="disclaimer-footer">
+    <p>Aviso: TR é uma unidade demonstrativa interna do aplicativo TERRAS RARAS. As recompensas simuladas não representam dinheiro real nem crédito financeiro garantido.</p>
+  </footer>
+  <script src="./app.js"></script>
+</body>
+</html>

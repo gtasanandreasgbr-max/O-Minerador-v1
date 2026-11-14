@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="theme-color" content="#07261B">
+  <meta name="description" content="TERRAS RARAS — Seu futuro vale mais! Carteira TR, missões interativas e mineração tecnológica.">
+  <title>TERRAS RARAS — Seu futuro vale mais!</title>
+  <link rel="manifest" href="./manifest.json">
+  <link rel="icon" type="image/svg+xml" href="./assets/icon.svg">
+  <link rel="apple-touch-icon" href="./assets/icon-192.png">
+  <link rel="stylesheet" href="./style.css">
+</head>
+<body data-page="home">
+  <header class="app-header">
+    <div class="header-inner">
+      <a href="index.html" class="brand-group" aria-label="TERRAS RARAS Início">
+        <div class="brand-logo">TR</div>
+        <div class="brand-titles">
+          <h1>TERRAS RARAS</h1>
+          <p class="brand-slogan">Seu futuro vale mais!</p>
+        </div>
+      </a>
+      <div class="header-actions">
+        <div class="wallet-pill" aria-label="Carteira TR">
+          <div>
+            <span class="wallet-pill-label">Carteira TR</span>
+            <span class="wallet-pill-value" data-wallet-balance>600 TR</span>
+          </div>
+        </div>
+        
+      </div>
+    </div>
+  </header>
+  <nav class="desktop-nav" aria-label="Navegação principal">
+    <ul class="desktop-nav-list">
+      <li><a href="index.html" class="desktop-nav-link active"><span>🏠</span><span>Início</span></a></li>
+      <li><a href="missao.html" class="desktop-nav-link"><span>🎯</span><span>Missões</span></a></li>
+      <li><a href="conquistas.html" class="desktop-nav-link"><span>🏆</span><span>Conquistas</span></a></li>
+      <li><a href="historico.html" class="desktop-nav-link"><span>📜</span><span>Histórico</span></a></li>
+      <li><a href="configuracoes.html" class="desktop-nav-link"><span>⚙️</span><span>Configurações</span></a></li>
+    </ul>
+  </nav>
+
+  <nav class="mobile-bottom-nav" aria-label="Navegação inferior">
+    <a href="index.html" class="mobile-nav-item active"><span class="nav-icon">🏠</span><span>Início</span></a>
+    <a href="missao.html" class="mobile-nav-item"><span class="nav-icon">🎯</span><span>Missões</span></a>
+    <a href="conquistas.html" class="mobile-nav-item"><span class="nav-icon">🏆</span><span>Conquistas</span></a>
+    <a href="historico.html" class="mobile-nav-item"><span class="nav-icon">📜</span><span>Histórico</span></a>
+    <a href="configuracoes.html" class="mobile-nav-item"><span class="nav-icon">⚙️</span><span>Configurações</span></a>
+  </nav>
+
+  <main class="main-container">
+    <!-- Banner Principal de Mineração -->
+    <section class="hero-banner" aria-label="Destaque Terras Raras">
+      <img src="./assets/terras-raras-banner.jpg" alt="Mineração de terras raras, cristais minerais e escavadeira tecnológica">
+      <div class="hero-overlay">
+        <span class="badge badge-gold" style="width:fit-content;">⛏️ TECNOLOGIA &amp; RECURSOS MINERAIS</span>
+        <h2 class="hero-title">Universo TERRAS RARAS</h2>
+        <p class="hero-subtitle">Inovação, sustentabilidade e valorização mineral na palma da sua mão.</p>
+      </div>
+    </section>
+
+    <!-- Mensagem de Boas-vindas com Narração em Português -->
+    <section class="card card-emerald" aria-labelledby="welcome-heading">
+      <span class="badge badge-emerald" style="margin-bottom:10px;">💎 CARTEIRA DIGITAL TR</span>
+      <h2 id="welcome-heading" class="section-title">Bem-vindo à sua carteira TR!</h2>
+      <p class="section-desc">
+        Acompanhe seu saldo, participe das missões e descubra novas oportunidades no universo TERRAS RARAS.
+      </p>
+      <div style="display:flex; flex-wrap:wrap; gap:10px; align-items:center;">
+        <button type="button" id="btn-welcome-audio" class="btn btn-emerald">
+          🔊 OUVIR MENSAGEM
+        </button>
+        <button type="button" data-pwa-install-btn class="btn btn-outline">
+          📲 INSTALAR APLICATIVO
+        </button>
+      </div>
+      <div class="audio-status-bar" aria-live="polite">
+        <span id="audio-status-text">Pronto para narrar em português (pt-BR).</span>
+      </div>
+      <div id="manual-install-guide" class="notice-box" style="display:none;">
+        <strong>Como instalar manualmente:</strong> Toque no menu do seu navegador (três pontos no Android/Chrome ou ícone Compartilhar no iPhone/Safari) e selecione <strong>"Instalar aplicativo"</strong> ou <strong>"Adicionar à Tela de Início"</strong>.
+      </div>
+    </section>
+
+    <!-- Cartão Destacado de Recompensa -->
+    <section class="card card-gold-highlight" aria-labelledby="reward-heading">
+      <div style="display:flex; justify-content:space-between; align-items:center; flex-wrap:wrap; gap:8px; margin-bottom:10px;">
+        <span class="badge badge-gold">✨ RECOMPENSA ESPECIAL</span>
+        <span id="home-mission-status" class="badge badge-gold">DISPONÍVEL</span>
+      </div>
+      <h2 id="reward-heading" class="section-title" style="font-size:1.45rem; color:var(--gold-light);">
+        GANHE MAIS 50 TR!
+      </h2>
+      <p class="section-desc">
+        Participe da missão de instalação do aplicativo e aumente seu saldo de Terras Raras.
+      </p>
+      <a href="missao.html" class="btn btn-gold btn-block">
+        🎁 PARTICIPAR DA MISSÃO
+      </a>
+    </section>
+  </main>
+
+  <footer class="disclaimer-footer">
+    <p>Aviso: TR é uma unidade demonstrativa interna do aplicativo TERRAS RARAS. As recompensas simuladas não representam dinheiro real nem crédito financeiro garantido.</p>
+  </footer>
+  <script src="./app.js"></script>
+</body>
+</html>

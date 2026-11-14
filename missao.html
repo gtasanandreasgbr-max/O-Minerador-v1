@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="theme-color" content="#07261B">
+  <meta name="description" content="Missão Especial TERRAS RARAS — Instale o aplicativo e ganhe +50 TR demonstrativos.">
+  <title>Missões — TERRAS RARAS</title>
+  <link rel="manifest" href="./manifest.json">
+  <link rel="icon" type="image/svg+xml" href="./assets/icon.svg">
+  <link rel="apple-touch-icon" href="./assets/icon-192.png">
+  <link rel="stylesheet" href="./style.css">
+</head>
+<body data-page="missao">
+  <header class="app-header">
+    <div class="header-inner">
+      <a href="index.html" class="brand-group" aria-label="TERRAS RARAS Início">
+        <div class="brand-logo">TR</div>
+        <div class="brand-titles">
+          <div class="brand-name">TERRAS RARAS</div>
+          <p class="brand-slogan">Seu futuro vale mais!</p>
+        </div>
+      </a>
+      <div class="header-actions">
+        <div class="wallet-pill" aria-label="Carteira TR">
+          <div>
+            <span class="wallet-pill-label">Carteira TR</span>
+            <span class="wallet-pill-value" data-wallet-balance>600 TR</span>
+          </div>
+        </div>
+        <a href="index.html" class="btn-back" aria-label="Voltar para o início">← VOLTAR</a>
+      </div>
+    </div>
+  </header>
+  <nav class="desktop-nav" aria-label="Navegação principal">
+    <ul class="desktop-nav-list">
+      <li><a href="index.html" class="desktop-nav-link"><span>🏠</span><span>Início</span></a></li>
+      <li><a href="missao.html" class="desktop-nav-link active"><span>🎯</span><span>Missões</span></a></li>
+      <li><a href="conquistas.html" class="desktop-nav-link"><span>🏆</span><span>Conquistas</span></a></li>
+      <li><a href="historico.html" class="desktop-nav-link"><span>📜</span><span>Histórico</span></a></li>
+      <li><a href="configuracoes.html" class="desktop-nav-link"><span>⚙️</span><span>Configurações</span></a></li>
+    </ul>
+  </nav>
+
+  <nav class="mobile-bottom-nav" aria-label="Navegação inferior">
+    <a href="index.html" class="mobile-nav-item"><span class="nav-icon">🏠</span><span>Início</span></a>
+    <a href="missao.html" class="mobile-nav-item active"><span class="nav-icon">🎯</span><span>Missões</span></a>
+    <a href="conquistas.html" class="mobile-nav-item"><span class="nav-icon">🏆</span><span>Conquistas</span></a>
+    <a href="historico.html" class="mobile-nav-item"><span class="nav-icon">📜</span><span>Histórico</span></a>
+    <a href="configuracoes.html" class="mobile-nav-item"><span class="nav-icon">⚙️</span><span>Configurações</span></a>
+  </nav>
+
+  <main class="main-container">
+    <!-- Banner da Missão -->
+    <section class="card card-gold-highlight" aria-labelledby="mission-banner-title">
+      <span class="badge badge-gold" style="margin-bottom:10px;">🚀 MISSÃO ESPECIAL</span>
+      <h1 id="mission-banner-title" class="section-title" style="font-size:1.55rem;">
+        INSTALE O APLICATIVO
+      </h1>
+      <p class="section-desc">
+        Instale o TERRAS RARAS no seu dispositivo e participe da nossa missão especial.
+      </p>
+
+      <div class="reward-highlight-box">
+        <div>
+          <span style="font-size:0.78rem; text-transform:uppercase; letter-spacing:0.8px; color:var(--text-secondary); display:block;">
+            Recompensa em Destaque
+          </span>
+          <span class="reward-amount">+50 TR</span>
+        </div>
+        <button type="button" data-pwa-install-btn class="btn btn-emerald">
+          📲 INSTALAR APLICATIVO
+        </button>
+      </div>
+
+      <div id="manual-install-guide" class="notice-box" style="display:none; margin-bottom:14px;">
+        <strong>Instalação via navegador:</strong> Abra o menu do navegador e toque em <strong>"Instalar aplicativo"</strong> (Android/Desktop) ou em <strong>Compartilhar → "Adicionar à Tela de Início"</strong> (iPhone/iPad).
+      </div>
+
+      <button type="button" id="btn-complete-mission" class="btn btn-gold btn-block">
+        🎁 CONCLUIR MISSÃO E RECEBER +50 TR
+      </button>
+
+      <div id="mission-completion-status" class="notice-box" aria-live="polite">
+        <strong>Status:</strong> Carregando status da missão...
+      </div>
+    </section>
+
+    <!-- Sistema de Áudio das Missões -->
+    <section class="card card-emerald" aria-labelledby="audio-mission-heading">
+      <span class="badge badge-emerald" style="margin-bottom:10px;">🎙️ ASSISTENTE DE VOZ PT-BR</span>
+      <h2 id="audio-mission-heading" class="section-title">Áudio Guiado da Missão</h2>
+      <p class="section-desc">
+        Ouça a explicação completa ou o passo a passo detalhado em português brasileiro.
+      </p>
+
+      <div class="audio-controls-grid">
+        <button type="button" id="btn-audio-explain" class="btn btn-emerald">
+          🔊 OUVIR EXPLICAÇÃO DA MISSÃO
+        </button>
+        <button type="button" id="btn-audio-steps" class="btn btn-outline">
+          📋 OUVIR PASSO A PASSO
+        </button>
+        <button type="button" id="btn-audio-stop" class="btn btn-danger">
+          ⏹️ PARAR ÁUDIO
+        </button>
+      </div>
+
+      <div class="audio-status-bar" aria-live="polite">
+        <span id="audio-status-text">Selecione um botão acima para iniciar a narração.</span>
+      </div>
+    </section>
+
+    <!-- Área de Instruções -->
+    <section class="card" aria-labelledby="how-to-heading">
+      <h2 id="how-to-heading" class="section-title">COMO PARTICIPAR?</h2>
+      <ol class="steps-list">
+        <li class="step-item">
+          <span class="step-number">1</span>
+          <span class="step-text">Abra o TERRAS RARAS no navegador.</span>
+        </li>
+        <li class="step-item">
+          <span class="step-number">2</span>
+          <span class="step-text">Toque em Instalar aplicativo, quando essa opção estiver disponível.</span>
+        </li>
+        <li class="step-item">
+          <span class="step-number">3</span>
+          <span class="step-text">Aguarde a instalação.</span>
+        </li>
+        <li class="step-item">
+          <span class="step-number">4</span>
+          <span class="step-text">Retorne à página de Missões para concluir a missão.</span>
+        </li>
+      </ol>
+
+      <div class="notice-box">
+        <strong>Importante:</strong> nesta versão, a instalação não é verificada automaticamente. A confirmação é manual e o saldo fica salvo somente neste navegador.
+      </div>
+    </section>
+  </main>
+
+  <footer class="disclaimer-footer">
+    <p>Aviso: TR é uma unidade demonstrativa interna do aplicativo TERRAS RARAS. As recompensas simuladas não representam dinheiro real nem crédito financeiro garantido.</p>
+  </footer>
+  <script src="./app.js"></script>
+</body>
+</html>
