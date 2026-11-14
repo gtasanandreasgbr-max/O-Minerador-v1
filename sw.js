@@ -57,3 +57,45 @@ document.addEventListener("DOMContentLoaded", function() {
     botao.addEventListener("click", iniciarAudioMissao);
   }
 });
+// NARRAÇÃO DA EXPLICAÇÃO DA MISSÃO
+
+function ouvirExplicacaoMissao() {
+  window.speechSynthesis.cancel();
+
+  const explicacao = document.querySelector(
+    "#pagina-missoes .descricao-missao"
+  );
+
+  if (!explicacao) {
+    alert("Explicação da missão não encontrada.");
+    return;
+  }
+
+  const texto = explicacao.innerText.trim();
+
+  if (!texto) {
+    alert("Esta missão ainda não possui explicação.");
+    return;
+  }
+
+  const fala = new SpeechSynthesisUtterance(texto);
+
+  fala.lang = "pt-BR";
+  fala.rate = 0.90;
+  fala.pitch = 1;
+  fala.volume = 1;
+
+  window.speechSynthesis.speak(fala);
+}
+
+document.addEventListener("DOMContentLoaded", () => {
+  document
+    .getElementById("ouvirExplicacaoMissao")
+    ?.addEventListener("click", ouvirExplicacaoMissao);
+
+  document
+    .getElementById("pararExplicacaoMissao")
+    ?.addEventListener("click", () => {
+      window.speechSynthesis.cancel();
+    });
+});
