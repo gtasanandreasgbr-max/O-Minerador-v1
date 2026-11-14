@@ -1,41 +1,48 @@
-// Cache básico para abrir a interface mesmo sem conexão após a primeira visita.
-const CACHE_NAME = "terras-raras-v1";
-const APP_FILES = [
-  "./",
-  "./index.html",
-  "./style.css",
-  "./app.js",
-  "./manifest.json",
-  "./icon.svg",
-  "./assets/terras-raras-banner.jpg"
-];
+// ======================================
+// SISTEMA DE ÁUDIO TERRAS RARAS
+// ======================================
 
-self.addEventListener("install", (event) => {
-  event.waitUntil(
-    caches.open(CACHE_NAME).then((cache) => cache.addAll(APP_FILES))
-  );
-  self.skipWaiting();
-});
+const btnAudio = document.getElementById("btnAudio");
 
-self.addEventListener("activate", (event) => {
-  event.waitUntil(
-    caches.keys().then((keys) =>
-      Promise.all(keys.filter((key) => key !== CACHE_NAME).map((key) => caches.delete(key)))
-    )
-  );
-  self.clients.claim();
-});
+btnAudio.addEventListener("click", function() {
 
-self.addEventListener("fetch", (event) => {
-  if (event.request.method !== "GET") return;
-  event.respondWith(
-    caches.match(event.request).then((cached) => {
-      if (cached) return cached;
-      return fetch(event.request).then((response) => {
-        const copy = response.clone();
-        caches.open(CACHE_NAME).then((cache) => cache.put(event.request, copy));
-        return response;
-      }).catch(() => caches.match("./index.html"));
-    })
-  );
+    // Cancela uma fala anterior
+    window.speechSynthesis.cancel();
+
+    // Mensagem que será narrada
+    const mensagem =
+    "Parabéns! Você tinha 100 Terras Raras " +
+    "e acabou de receber mais 50 TR. " +
+    "Seu saldo atual é de 150 TR. " +
+    "Continue participando para ganhar mais!";
+
+    // Cria a fala
+    const fala = new SpeechSynthesisUtterance(mensagem);
+
+    // Define o idioma português brasileiro
+    fala.lang = "pt-BR";
+
+    // Velocidade da voz
+    fala.rate = 0.95;
+
+    // Tom da voz
+    fala.pitch = 1;
+
+    // Volume
+    fala.volume = 1;
+
+    // Altera o botão durante a reprodução
+    btnAudio.innerHTML = "🔊 REPRODUZINDO ÁUDIO...";
+
+    fala.onend = function() {
+        btnAudio.innerHTML = "🔊 OUVIR MENSAGEM";
+    };
+
+    fala.onerror = function() {
+        btnAudio.innerHTML = "🔊 OUVIR MENSAGEM";
+    };
+
+    // Reproduz a mensagem
+    window.speechSynthesis.speak(fala);
+
 });
